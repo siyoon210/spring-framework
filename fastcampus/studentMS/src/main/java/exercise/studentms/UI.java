@@ -25,14 +25,41 @@ public class UI {
 
     public Student addStudent(){
         Scanner sc = new Scanner(System.in);
-        System.out.println("학생 정보를 입력해주세요");
-        System.out.print("이름 : ");
-        String name = sc.nextLine();
-        System.out.print("수학점수 : ");int math = sc.nextInt();
-        System.out.print("영어점수 : ");int eng = sc.nextInt();
-        System.out.print("국어점수 : ");int lang = sc.nextInt();
+        Student student = null;
 
-        Student student = new Student(name, math, eng, lang);
+        System.out.println("학생 정보를 입력해주세요");
+        System.out.print("이름 : "); String name = sc.nextLine();
+        int math = 0;
+        int eng = 0;
+        int lang = 0;
+        boolean unvalidInput = false;
+        do {
+            try {
+                System.out.print("수학점수 : ");
+                math = sc.nextInt();
+                System.out.print("영어점수 : ");
+                eng = sc.nextInt();
+                System.out.print("국어점수 : ");
+                lang = sc.nextInt();
+                unvalidInput = false;
+            } catch (Exception e) {
+                sc.nextLine();
+                unvalidInput = true;
+            }
+        } while (unvalidInput == true);
+
+
+        System.out.println("등록하시겠습니까? (Y/N)");
+        sc.nextLine();
+        String pattern = "(Y?|N?)";
+        String commit = sc.next(pattern);
+
+        if (commit == "Y") {
+            student = new Student(name, math, eng, lang);
+        } else {
+            student =null;
+            System.out.println("등록을 취소합니다.");
+        }
         return student;
     }
 

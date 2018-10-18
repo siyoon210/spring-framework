@@ -16,7 +16,11 @@ public class MainController {
         while (true) {
             int controlNum = ui.main();
             if (controlNum == 1) {
-                studentDAO.addStudent(ui.addStudent());
+                Student student = ui.addStudent();
+                if (student != null) {
+                    studentDAO.addStudent(student);
+                    System.out.println("등록했습니다.");
+                }
             } else if (controlNum == 2) {
                 ui.listStudnet(studentDAO.getStudentList());
             } else if (controlNum == 3) {
