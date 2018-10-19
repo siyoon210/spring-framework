@@ -49,17 +49,19 @@ public class UI {
         } while (unvalidInput == true);
 
 
-        System.out.println("등록하시겠습니까? (Y/N)");
-        sc.nextLine();
-        String pattern = "(Y?|N?)";
-        String commit = sc.next(pattern);
-
-        if (commit == "Y") {
-            student = new Student(name, math, eng, lang);
-        } else {
-            student =null;
-            System.out.println("등록을 취소합니다.");
-        }
+//        System.out.println("등록하시겠습니까? (Y/N)");
+//        sc.nextLine();
+//        String pattern = "(Y?|N?)";
+//        String commit = sc.next(pattern);
+//
+//        System.out.println(commit);
+//        if (commit == "Y") {
+//
+//        } else if (commit!="Y"){
+//            student =null;
+//            System.out.println("등록을 취소합니다.");
+//        }
+        student = new Student(name, math, eng, lang);
         return student;
     }
 
