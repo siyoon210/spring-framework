@@ -8,7 +8,7 @@ public class Board {
     private String name;
     private String content;
     private Date regdate;
-    private int readCount;
+    private int readCount; // read_count 칼럼.
 
     public Long getId() {
         return id;
@@ -70,11 +70,16 @@ public class Board {
                 '}';
     }
 
-    //    id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
-//    title varchar(255) not null,
-//    name varchar(255) NOT NULL,
-//    content text,
-//    regdate datetime,
-//    read_count int,
-
 }
+
+/*
+create table board (
+    id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    title varchar(255) not null,
+    name varchar(255) NOT NULL,
+    content text,
+    regdate datetime,
+    read_count int,
+    primary key(id)
+);
+ */

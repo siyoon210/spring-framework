@@ -35,14 +35,25 @@ public class BoardServiceImpl implements BoardService {
         return board;
     }
 
-
     // 읽기 전용 메소드
     // start : 시작 id
     // limit : 읽어올 수
     @Override
     @Transactional(readOnly = true)
     public List<Board> getBoards(int start, int limit) {
-        List<Board> boards = boardDao.getBoards(start, limit);
-        return boards;
+        return boardDao.getBoards();
     }
 }
+
+/*
+
+create table board (
+    id bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+    title varchar(255) not null,
+    name varchar(255) NOT NULL,
+    content text,
+    regdate datetime,
+    read_count int,
+    primary key(id)
+);
+ */
