@@ -13,11 +13,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 @EnableTransactionManagement
 public class DBConfig {
     private String driverClassName = "org.mariadb.jdbc.Driver";
-
     private String url = "jdbc:mariadb://localhost:3306/Test_db";
-
     private String username = "siyoon";
-
     private String password = "1234";
 
     @Bean

@@ -170,3 +170,21 @@ INSERT INTO PROJECT_PARTICIPATION VALUES (1004, 7844, '2008-02-01', null, 101);
 INSERT INTO PROJECT_PARTICIPATION VALUES (1004, 7900, '2008-03-01', '2008-04-01', 101);
 INSERT INTO PROJECT_PARTICIPATION VALUES (1004, 7900, '2008-05-20', null, 101);
 
+
+INSERT INTO auth(auth_name, auth_level) VALUES ("최고관리자",1);
+INSERT INTO auth(auth_name, auth_level,category_id) VALUES ("자바관리자",2,1);
+INSERT INTO auth(auth_name, auth_level,category_id) VALUES ("스프링관리자",2,2);
+INSERT INTO auth(auth_name, auth_level) VALUES ("일반회원",3);
+
+
+INSERT INTO member(name, password, email, auth_name) VALUES ("admin", "ad1234", "admin@gmail.com", "최고관리자");
+INSERT INTO member(name, password, email, auth_name) VALUES ("java-admin", "ja1234", "jung210@naver.com", "자바관리자");
+INSERT INTO member(name, password, email, auth_name) VALUES ("spring-admin", "sp1234", "sprad@naver.com", "스프링관리자");
+INSERT INTO member(name, password, email) VALUES ("lol789", "lo1234", "loljam@naver.com");
+INSERT INTO member(name, password, email) VALUES ("jcjboard321", "jc1234", "jcjboard@naver.com");
+INSERT INTO member(name, password, email) VALUES ("mama80", "ma1234", "mymama@gamil.com");
+INSERT INTO member(name, password, email) VALUES ("fafa90", "fa1234", "myfafa@naver.com");
+INSERT INTO member(name, password, email) VALUES ("siyoon", "si1234", "siyoon210@naver.com");
+INSERT INTO member(name, password, email) VALUES ("dpudpu", "dp1234", "daejoon137@naver.com");
+INSERT INTO member(name, password, email) VALUES ("misunjoo", "mi1234", "misun88@naver.com");
+INSERT INTO member(name, password, email) VALUES ("jeremy", "je1234", "shinejeremy@naver.com");
