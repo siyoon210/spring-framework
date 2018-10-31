@@ -1,3 +1,45 @@
+https://www.journaldev.com/2573/spring-mvc-file-upload-example-single-multiple-files
+
+1. pom.xml에 업로드를 위한 라이브러리 추가
+
+
+		<!-- Apache Commons FileUpload -->
+		<dependency>
+			<groupId>commons-fileupload</groupId>
+			<artifactId>commons-fileupload</artifactId>
+			<version>1.3.1</version>
+		</dependency>
+
+		<!-- Apache Commons IO -->
+		<dependency>
+			<groupId>commons-io</groupId>
+			<artifactId>commons-io</artifactId>
+			<version>2.4</version>
+		</dependency>
+
+2. Spring에서 Multipart를 사용하기위한 Bean을 추가
+
+    @Bean
+    public CommonsMultipartResolver multipartResolver() {
+        CommonsMultipartResolver resolver=new CommonsMultipartResolver();
+        resolver.setDefaultEncoding("utf-8");
+        return resolver;
+    }
+
+3. form을 수정
+
+
+<form method="post" action="/boards" enctype="multipart/form-data">
+    name : <input type="text" name="name"><br>
+    title : <input type="text" name="title"><br>
+    content : <textarea name="content" cols="50" rows="6"></textarea><br>
+    <input type="file" name="file"/>
+    <br>
+    <input type="submit">
+</form>
+
+4. Controller를 수정
+
 package examples.daoexam.controller;
 
 import examples.daoexam.dto.Board;
@@ -40,7 +82,7 @@ public class BoardController {
         String originalFileName = "github.gif";
         String savePath = "/tmp/2018/10/31/90b51b95-4d5a-4cb0-829e-c29947a9dab5";
 
-        response.setContentLengthLong(size);
+        response.setContentLength((int)size);
 //        response.setContentType("application/x-msdownload");
         response.setContentType(contentType);
         try {
@@ -110,15 +152,25 @@ public class BoardController {
         File fileObj = new File(saveDir);
         fileObj.mkdirs();
 
-        try (InputStream in = file.getInputStream();
-             OutputStream out = new FileOutputStream(saveFile)){
+        InputStream in = null;
+        OutputStream out = null;
+        try{
+            in = file.getInputStream();
+            out = new FileOutputStream(saveFile);
             byte[] buffer = new byte[1024];
             int readCount = 0;
-            while ((readCount = in.read(buffer)) != -1) {
+            while((readCount = in.read(buffer)) != -1){
                 out.write(buffer,0,readCount);
             }
-        } catch (Exception ex) {
+        }catch(Exception ex){
             ex.printStackTrace();
+        }finally {
+            if(in != null){
+                try{ in.close(); } catch(Exception e){}
+            }
+            if(out != null){
+                try{ out.close(); } catch(Exception e){}
+            }
         }
         System.out.println("------file info end ----");
 
