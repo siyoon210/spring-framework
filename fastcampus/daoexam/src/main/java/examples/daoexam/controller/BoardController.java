@@ -40,7 +40,7 @@ public class BoardController {
         String originalFileName = "github.gif";
         String savePath = "/tmp/2018/10/31/90b51b95-4d5a-4cb0-829e-c29947a9dab5";
 
-        response.setContentLength((int)size);
+        response.setContentLengthLong(size);
 //        response.setContentType("application/x-msdownload");
         response.setContentType(contentType);
         try {
