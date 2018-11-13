@@ -14,15 +14,15 @@ public class PaymentInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column
+    @Column(nullable = false)
     private String way;
-    @Column
+    @Column(nullable = false)
     private int totalPrice;
     @Column(length = 100, nullable = false)
     private Date date;
-    @Column
+    @Column(nullable = false)
     private Boolean deposit;
     @OneToOne
-    @JoinColumn(name = "purchase_list_id")
+    @JoinColumn(name = "purchase_list_id",nullable = false)
     private PurchaseList purchaseList;
 }

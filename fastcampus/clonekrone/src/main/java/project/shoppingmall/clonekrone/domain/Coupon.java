@@ -14,17 +14,20 @@ import java.util.Set;
 public class Coupon {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+
     @Column(length = 50, nullable = false)
     private String name;
+
     @Column(nullable = false)
     private Date expiryDate;
-    @Column
+
+    @Column(nullable = false)
     private int discountRate;
 
     @ManyToMany
     @JoinTable(name = "coupon_product",
-            joinColumns = @JoinColumn(name = "coupon_id", referencedColumnName = "id") ,
-            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id") )
+            joinColumns = @JoinColumn(name = "coupon_id", referencedColumnName = "id",nullable = false) ,
+            inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id",nullable = false) )
     private Set<Product> products;
 }

@@ -13,26 +13,36 @@ import java.util.Date;
 public class DeliveryInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
+
     @Column(length = 100, nullable = false)
     private String name;
+
     @Column(length = 100, nullable = false)
     private String phoneNumber;
+
     @Column(length = 100, nullable = false)
     private String zipCode;
-    @Column(length = 255, nullable = false)
+
+    @Column(nullable = false)
     private String address;
-    @Column(length = 255, nullable = false)
+
+    @Column(nullable = false)
     private String detailAddress;
-    @Column(length = 255, nullable = false)
+
+    @Column(nullable = false)
     private String serialNumber;
+
     @Column(length = 100, nullable = false)
     private String company;
+
     @Column(length = 100, nullable = false)
     private String status;
+
     @Column(length = 100, nullable = false)
     private Date arrivalDate;
+
     @OneToOne
-    @JoinColumn(name = "purchase_list_id")
+    @JoinColumn(name = "purchase_list_id",nullable = false)
     private PurchaseList purchaseList;
 }

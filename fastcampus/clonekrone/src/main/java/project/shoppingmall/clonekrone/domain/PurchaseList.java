@@ -13,10 +13,10 @@ import java.util.Set;
 public class PurchaseList {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "member_id")
+    @JoinColumn(name = "member_id",nullable = false)
     private Member member;
 
     @OneToOne(mappedBy = "purchaseList")
