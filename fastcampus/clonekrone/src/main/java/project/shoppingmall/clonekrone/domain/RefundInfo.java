@@ -13,12 +13,12 @@ import java.util.Date;
 public class RefundInfo {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @OneToOne
-    @JoinColumn(name = "purchase_product_id")
+    @JoinColumn(name = "purchase_product_id",nullable = false)
     private PurchaseProduct purchaseProduct;
-    @Column(length = 255)
+
     private String reason;
-    @Column
+
     private Date confirmDate;
 }

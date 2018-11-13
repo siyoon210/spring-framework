@@ -6,25 +6,23 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "purchase_product")
-@Setter
+@Table(name = "cart")
 @Getter
-public class PurchaseProduct {
+@Setter
+public class Cart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private int orderQuantity;
+
     @ManyToOne
-    @JoinColumn(name = "purchase_list_id",nullable = false)
-    private PurchaseList purchaseList;
+    @JoinColumn(name = "member_id",nullable = false)
+    private Member member;
 
     @ManyToOne
     @JoinColumn(name = "product_id",nullable = false)
     private Product product;
 
-    @Column(nullable = false)
-    private Boolean refund;
-
-    @OneToOne(mappedBy = "purchaseProduct")
-    private RefundInfo refundInfo;
 }

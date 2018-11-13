@@ -12,12 +12,12 @@ import javax.persistence.*;
 public class Option {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(length = 100, nullable = false)
     private String name;
-    @Column
+
     private int extraPrice;
     @ManyToOne
-    @JoinColumn(name = "product_id")
+    @JoinColumn(name = "product_id",nullable = false)
     private Product product;
 }

@@ -14,29 +14,33 @@ import java.util.Set;
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Long id;
     @Column(length = 100, nullable = false)
     private String name;
     @Column(nullable = false)
     private int price;
     @Column(nullable = false)
     private int pointRate;
-    @Column(length = 255, nullable = false)
+    @Column(nullable = false)
     private String nutrient;
     @Column(nullable = false)
     private Boolean cutting;
     @Column(nullable = false)
     private int quantity;
-    @Column
+    @Column(nullable = false)
     private Date regdate;
 
     @ManyToOne
-    @JoinColumn(name ="product_id")
+    @JoinColumn(name ="product_id",nullable = false)
     private Category category;
+
     @OneToMany(mappedBy = "product")
     private Set<Option> options;
 
     @OneToMany(mappedBy = "product")
     private Set<PurchaseProduct> purchaseProducts;
+
+    @OneToMany(mappedBy = "product")
+    private Set<Cart> carts;
 }
 
