@@ -31,7 +31,7 @@ public class Product {
     private Date regdate;
 
     @ManyToOne
-    @JoinColumn(name ="product_id",nullable = false)
+    @JoinColumn(name ="category_id",nullable = false)
     private Category category;
 
     @OneToMany(mappedBy = "product")
