@@ -34,8 +34,8 @@ public class Product {
     @JoinColumn(name ="category_id",nullable = false)
     private Category category;
 
-    @OneToMany(mappedBy = "product")
-    private Set<Option> options;
+    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    private Set<ProductOption> productOptions;
 
     @OneToMany(mappedBy = "product")
     private Set<PurchaseProduct> purchaseProducts;

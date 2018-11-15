@@ -19,10 +19,10 @@ public class PurchaseRecord {
     @JoinColumn(name = "member_id",nullable = false)
     private Member member;
 
-    @OneToOne(mappedBy = "purchaseRecord")
+    @OneToOne(mappedBy = "purchaseRecord",cascade = CascadeType.ALL)
     private DeliveryInfo deliveryInfo;
 
-    @OneToOne(mappedBy = "purchaseRecord")
+    @OneToOne(mappedBy = "purchaseRecord",cascade = CascadeType.ALL)
     private PaymentInfo paymentInfo;
 
     @OneToMany(mappedBy = "purchaseRecord")

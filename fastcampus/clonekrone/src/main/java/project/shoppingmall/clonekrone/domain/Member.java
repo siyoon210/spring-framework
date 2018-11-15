@@ -57,7 +57,7 @@ public class Member {
     @ManyToMany
     @JoinTable(name = "member_coupon",
             joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id",nullable = false) ,
-            inverseJoinColumns = @JoinColumn(name = "coupon_id", referencedColumnName = "id",nullable = false) )
+            inverseJoinColumns = @JoinColumn(name = "coupon_id", referencedColumnName = "id",nullable = false))
     private Set<Coupon> coupons;
 
     @ManyToMany
@@ -66,9 +66,9 @@ public class Member {
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id",nullable = false) )
     private Set<Product> wishProducts;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private Set<CartProduct> cartProducts;
 
-    @OneToMany(mappedBy = "member")
+    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
     private Set<PurchaseRecord> purchaseRecords;
 }

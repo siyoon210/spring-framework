@@ -14,6 +14,9 @@ public class PurchaseProduct {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column(nullable = false)
+    private String refundStatus;
+
     @ManyToOne
     @JoinColumn(name = "purchase_record_id",nullable = false)
     private PurchaseRecord purchaseRecord;
@@ -22,9 +25,6 @@ public class PurchaseProduct {
     @JoinColumn(name = "product_id",nullable = false)
     private Product product;
 
-    @Column(nullable = false)
-    private Boolean refund;
-
-    @OneToOne(mappedBy = "purchaseProduct")
+    @OneToOne(mappedBy = "purchaseProduct",cascade = CascadeType.ALL)
     private RefundInfo refundInfo;
 }
