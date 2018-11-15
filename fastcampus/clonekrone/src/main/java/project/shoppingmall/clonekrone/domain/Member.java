@@ -57,7 +57,7 @@ public class Member {
     @ManyToMany
     @JoinTable(name = "member_coupon",
             joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id",nullable = false) ,
-            inverseJoinColumns = @JoinColumn(name = "coupon_id", referencedColumnName = "id",nullable = false) )
+            inverseJoinColumns = @JoinColumn(name = "coupon_id", referencedColumnName = "id",nullable = false))
     private Set<Coupon> coupons;
 
     @ManyToMany
@@ -65,10 +65,4 @@ public class Member {
             joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id",nullable = false) ,
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id",nullable = false) )
     private Set<Product> wishProducts;
-
-    @OneToMany(mappedBy = "member")
-    private Set<CartProduct> cartProducts;
-
-    @OneToMany(mappedBy = "member")
-    private Set<PurchaseRecord> purchaseRecords;
 }

@@ -6,10 +6,10 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "option")
+@Table(name = "product_option")
 @Getter
 @Setter
-public class Option {
+public class ProductOption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
