@@ -26,10 +26,11 @@ public class Product {
     @Column(nullable = false)
     private Boolean cutting;
     @Column(nullable = false)
-    private int quantity;
-    @Column(nullable = false)
     private Date regdate;
 
+    @OneToOne
+    @JoinColumn(name = "quantity_id", nullable = false)
+    private Quantity quantity;
     @ManyToOne
     @JoinColumn(name ="category_id",nullable = false)
     private Category category;
@@ -37,10 +38,7 @@ public class Product {
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     private Set<ProductOption> productOptions;
 
-    @OneToMany(mappedBy = "product")
-    private Set<PurchaseProduct> purchaseProducts;
-
-    @OneToMany(mappedBy = "product")
-    private Set<CartProduct> cartProducts;
+    @OneToMany(mappedBy = "product_file")
+    private Set<ProductFile> productFiles;
 }
 

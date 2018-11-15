@@ -65,10 +65,4 @@ public class Member {
             joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id",nullable = false) ,
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id",nullable = false) )
     private Set<Product> wishProducts;
-
-    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
-    private Set<CartProduct> cartProducts;
-
-    @OneToMany(mappedBy = "member",cascade = CascadeType.ALL)
-    private Set<PurchaseRecord> purchaseRecords;
 }

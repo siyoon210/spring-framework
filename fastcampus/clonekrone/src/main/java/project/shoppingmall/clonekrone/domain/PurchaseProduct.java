@@ -17,6 +17,9 @@ public class PurchaseProduct {
     @Column(nullable = false)
     private String refundStatus;
 
+    @Column(nullable = false)
+    private int price; //구매 당시의 가격
+
     @ManyToOne
     @JoinColumn(name = "purchase_record_id",nullable = false)
     private PurchaseRecord purchaseRecord;
