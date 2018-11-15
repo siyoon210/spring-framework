@@ -23,6 +23,6 @@ public class PaymentInfo {
     @Column(nullable = false)
     private Boolean deposit;
     @OneToOne
-    @JoinColumn(name = "purchase_list_id",nullable = false)
-    private PurchaseList purchaseList;
+    @JoinColumn(name = "purchase_record_id",nullable = false)
+    private PurchaseRecord purchaseRecord;
 }

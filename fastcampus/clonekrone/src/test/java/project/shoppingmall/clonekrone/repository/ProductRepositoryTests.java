@@ -19,7 +19,7 @@ public class ProductRepositoryTests {
 
     @Test
     public void findBy를이용한조회해보기테스트() throws Exception {
-        List<Product> products = productRepository.findByName("빵");
+        List<Product> products = productRepository.findByName("단팥빵");
         for (Product product : products) {
             System.out.println(product.getName());
         }
