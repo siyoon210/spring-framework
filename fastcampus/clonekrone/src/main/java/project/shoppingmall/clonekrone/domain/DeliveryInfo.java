@@ -43,6 +43,6 @@ public class DeliveryInfo {
     private Date arrivalDate;
 
     @OneToOne
-    @JoinColumn(name = "purchase_list_id",nullable = false)
-    private PurchaseList purchaseList;
+    @JoinColumn(name = "purchase_record_id",nullable = false)
+    private PurchaseRecord purchaseRecord;
 }

@@ -7,10 +7,10 @@ import javax.persistence.*;
 import java.util.Set;
 
 @Entity
-@Table(name = "purchase_list")
+@Table(name = "purchase_record")
 @Setter
 @Getter
-public class PurchaseList {
+public class PurchaseRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -19,12 +19,12 @@ public class PurchaseList {
     @JoinColumn(name = "member_id",nullable = false)
     private Member member;
 
-    @OneToOne(mappedBy = "purchaseList")
+    @OneToOne(mappedBy = "purchaseRecord")
     private DeliveryInfo deliveryInfo;
 
-    @OneToOne(mappedBy = "purchaseList")
+    @OneToOne(mappedBy = "purchaseRecord")
     private PaymentInfo paymentInfo;
 
-    @OneToMany(mappedBy = "purchaseList")
+    @OneToMany(mappedBy = "purchaseRecord")
     private Set<PurchaseProduct> purchaseProducts;
 }

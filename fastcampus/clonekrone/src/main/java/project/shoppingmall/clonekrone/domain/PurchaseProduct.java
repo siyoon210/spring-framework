@@ -15,8 +15,8 @@ public class PurchaseProduct {
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "purchase_list_id",nullable = false)
-    private PurchaseList purchaseList;
+    @JoinColumn(name = "purchase_record_id",nullable = false)
+    private PurchaseRecord purchaseRecord;
 
     @ManyToOne
     @JoinColumn(name = "product_id",nullable = false)

@@ -61,14 +61,14 @@ public class Member {
     private Set<Coupon> coupons;
 
     @ManyToMany
-    @JoinTable(name = "wish_list",
+    @JoinTable(name = "wish_product",
             joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id",nullable = false) ,
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id",nullable = false) )
-    private Set<Product> wishList;
+    private Set<Product> wishProducts;
 
     @OneToMany(mappedBy = "member")
-    private Set<Cart> carts;
+    private Set<CartProduct> cartProducts;
 
     @OneToMany(mappedBy = "member")
-    private Set<PurchaseList> purchaseLists;
+    private Set<PurchaseRecord> purchaseRecords;
 }

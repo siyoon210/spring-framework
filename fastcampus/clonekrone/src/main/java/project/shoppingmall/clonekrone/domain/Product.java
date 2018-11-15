@@ -41,6 +41,6 @@ public class Product {
     private Set<PurchaseProduct> purchaseProducts;
 
     @OneToMany(mappedBy = "product")
-    private Set<Cart> carts;
+    private Set<CartProduct> cartProducts;
 }
 

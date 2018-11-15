@@ -17,4 +17,6 @@ public interface ProductRepository extends JpaRepository<Product, Long> {
     // Spring Data JPA method query
     // select * from article_group where name like ? limit ?
     //public Page<Product> findByNameContaining(String name, Pageable pageable);
+
+    
 }
