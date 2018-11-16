@@ -3,9 +3,13 @@ package project.shoppingmall.clonekrone.repository;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.repository.query.Param;
 import project.shoppingmall.clonekrone.domain.Product;
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
 // https://en.wikibooks.org/wiki/Java_Persistence?fbclid=IwAR13Gvni_MncOQ2hoOsns9vaS9ODSfHbMOx0Spm_UjPl7NBXznLh-t4NF_c
@@ -18,7 +22,12 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 
     // Spring Data JPA method query
     // select * from article_group where name like ? limit ?
-    //public Page<Product> findByNameContaining(String name, Pageable pageable);
+    Page<Product> findByNameContaining(String name, Pageable pageable);
 
-    
+
+    // JPQL을 이용한 조회
+    @Query(value = "select pr from Product pr where pr.name like CONCAT('%',:name,'%')")
+    Page<Product> findByNameContaining2(@Param("name")String name, Pageable pageable);
+
+
 }
