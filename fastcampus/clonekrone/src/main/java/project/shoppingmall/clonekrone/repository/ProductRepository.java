@@ -2,14 +2,11 @@ package project.shoppingmall.clonekrone.repository;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.query.Param;
 import project.shoppingmall.clonekrone.domain.Product;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.List;
 
 // https://en.wikibooks.org/wiki/Java_Persistence?fbclid=IwAR13Gvni_MncOQ2hoOsns9vaS9ODSfHbMOx0Spm_UjPl7NBXznLh-t4NF_c

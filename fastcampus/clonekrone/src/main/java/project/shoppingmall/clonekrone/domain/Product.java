@@ -24,18 +24,18 @@ public class Product {
     @Column(nullable = false)
     private String nutrient;
     @Column(nullable = false)
-    private Boolean cutting;
+    private Boolean cuttingOption;
     @Column(nullable = false)
     private Date regdate;
+    @Column(nullable = false)
+    private int quantity;
 
-    @OneToOne
-    @JoinColumn(name = "quantity_id")
-    private Quantity quantity;
     @ManyToOne
     @JoinColumn(name ="category_id",nullable = false)
     private Category category;
 
-    @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
+    @OneToMany
+    @JoinColumn(name = "product_id")
     private Set<ProductOption> productOptions;
 
     @OneToMany

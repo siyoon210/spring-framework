@@ -1,14 +1,14 @@
 package project.shoppingmall.clonekrone.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "cart_product")
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CartProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -16,6 +16,10 @@ public class CartProduct {
 
     @Column(nullable = false)
     private int orderQuantity;
+    @Column
+    private Boolean cutting;
+    @Column
+    private String option;
 
     @ManyToOne
     @JoinColumn(name = "member_id",nullable = false)

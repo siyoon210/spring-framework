@@ -1,23 +1,23 @@
 package project.shoppingmall.clonekrone.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
 @Table(name = "category")
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(length = 50, nullable = false)
-    private String classification1;
+    private String name;
 
-    @Column(length = 50, nullable = false)
-    private String classification2;
+    @Column
+    private int superior_id; //상위 카테고리 아이디
 }
