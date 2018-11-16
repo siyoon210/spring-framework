@@ -1,7 +1,6 @@
 package project.shoppingmall.clonekrone.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -9,8 +8,9 @@ import java.util.Set;
 
 @Entity
 @Table(name = "product")
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,7 +29,7 @@ public class Product {
     private Date regdate;
 
     @OneToOne
-    @JoinColumn(name = "quantity_id", nullable = false)
+    @JoinColumn(name = "quantity_id")
     private Quantity quantity;
     @ManyToOne
     @JoinColumn(name ="category_id",nullable = false)
@@ -38,7 +38,8 @@ public class Product {
     @OneToMany(mappedBy = "product",cascade = CascadeType.ALL)
     private Set<ProductOption> productOptions;
 
-    @OneToMany(mappedBy = "product_file")
+    @OneToMany
+    @JoinColumn(name = "product_file_id")
     private Set<ProductFile> productFiles;
 }
 
