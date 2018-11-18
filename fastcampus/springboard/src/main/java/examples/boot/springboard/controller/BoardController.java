@@ -1,7 +1,9 @@
-package examples.daoexam.controller;
+package examples.boot.springboard.controller;
 
-import examples.daoexam.dto.Board;
-import examples.daoexam.service.BoardService;
+
+
+import examples.boot.springboard.dto.Board;
+import examples.boot.springboard.service.BoardService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;

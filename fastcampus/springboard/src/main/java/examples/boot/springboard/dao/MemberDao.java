@@ -1,6 +1,6 @@
-package examples.daoexam.dao;
+package examples.boot.springboard.dao;
 
-import examples.daoexam.dto.Member;
+import examples.boot.springboard.dto.Member;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.core.namedparam.BeanPropertySqlParameterSource;

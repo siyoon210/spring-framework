@@ -1,4 +1,4 @@
-package examples.daoexam.dto;
+package examples.boot.springboard.dto;
 
 import java.util.Date;
 

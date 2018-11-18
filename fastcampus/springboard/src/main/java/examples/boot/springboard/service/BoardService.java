@@ -1,6 +1,7 @@
-package examples.daoexam.service;
+package examples.boot.springboard.service;
 
-import examples.daoexam.dto.Board;
+
+import examples.boot.springboard.dto.Board;
 
 import java.util.List;
 

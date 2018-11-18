@@ -1,8 +1,7 @@
-package examples.daoexam.service;
+package examples.boot.springboard.service;
 
-import examples.daoexam.dao.BoardDao;
-import examples.daoexam.dao.MemberDao;
-import examples.daoexam.dto.Member;
+import examples.boot.springboard.dao.MemberDao;
+import examples.boot.springboard.dto.Member;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
