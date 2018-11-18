@@ -1,15 +1,15 @@
 package project.shoppingmall.clonekrone.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.Set;
 
 @Entity
 @Table(name = "purchase_record")
-@Setter
-@Getter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PurchaseRecord {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

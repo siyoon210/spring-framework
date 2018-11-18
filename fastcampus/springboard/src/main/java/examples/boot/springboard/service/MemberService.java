@@ -1,6 +1,7 @@
-package examples.daoexam.service;
+package examples.boot.springboard.service;
 
-import examples.daoexam.dto.Member;
+
+import examples.boot.springboard.dto.Member;
 
 public interface MemberService {
     public Member addMember(Member member);

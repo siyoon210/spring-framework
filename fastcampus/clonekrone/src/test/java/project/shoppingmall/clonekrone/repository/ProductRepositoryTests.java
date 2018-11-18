@@ -9,12 +9,10 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-import project.shoppingmall.clonekrone.domain.Category;
 import project.shoppingmall.clonekrone.domain.Product;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.Date;
 import java.util.List;
 
 @RunWith(SpringRunner.class)
@@ -49,7 +47,7 @@ public class ProductRepositoryTests {
     @Test
     public void 이름이포함된Product구하기테스트2() throws Exception{
         Pageable pageable = PageRequest.of(1, 3);
-        Page<Product> products = productRepository.findByNameContaining2("빵", pageable);
+        Page<Product> products = productRepository.findByNameContaining2("호밀빵", pageable);
 
         System.out.println(products.getTotalElements());
         System.out.println(products.getTotalPages());
@@ -67,22 +65,22 @@ public class ProductRepositoryTests {
         }
     }
 
-    @Test
-    public void save() {
-//        10,"35% 크랜베리 호밀 베이글(5개묶음)", 13000, 2, "100g 당 열량 : 226kcal", false, new Date(),3
-        Product product = new Product();
-        product.setId(10L);
-        product.setName("35% 크랜베리 호밀 베이글(5개묶음)");
-        product.setPrice(13000);
-        product.setPointRate(2);
-        product.setNutrient("100g당 열량 : 226kcal");
-        product.setCutting(false);
-        Category category = new Category();
-        category.setId(3L);
-        product.setCategory(category);
-        product.setRegdate(new Date());
-        em.persist(product);
-    }
+//    @Test
+//    public void save() {
+////        10,"35% 크랜베리 호밀 베이글(5개묶음)", 13000, 2, "100g 당 열량 : 226kcal", false, new Date(),3
+//        Product product = new Product();
+//        product.setId(10L);
+//        product.setName("35% 크랜베리 호밀 베이글(5개묶음)");
+//        product.setPrice(13000);
+//        product.setPointRate(2);
+//        product.setNutrient("100g당 열량 : 226kcal");
+//        product.setCutting(false);
+//        Category category = new Category();
+//        category.setId(3L);
+//        product.setCategory(category);
+//        product.setRegdate(new Date());
+//        em.persist(product);
+//    }
 
 
 }

@@ -1,14 +1,14 @@
 package project.shoppingmall.clonekrone.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "purchase_product")
-@Setter
-@Getter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class PurchaseProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

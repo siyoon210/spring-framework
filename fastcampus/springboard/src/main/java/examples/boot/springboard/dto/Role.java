@@ -1,4 +1,4 @@
-package examples.daoexam.dto;
+package examples.boot.springboard.dto;
 
 public class Role {
 	private int roleId;

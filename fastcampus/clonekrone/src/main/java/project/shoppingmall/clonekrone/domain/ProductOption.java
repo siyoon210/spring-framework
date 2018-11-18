@@ -1,14 +1,14 @@
 package project.shoppingmall.clonekrone.domain;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Table(name = "product_option")
-@Getter
-@Setter
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductOption {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,7 +17,4 @@ public class ProductOption {
     private String name;
 
     private int extraPrice;
-    @ManyToOne
-    @JoinColumn(name = "product_id",nullable = false)
-    private Product product;
 }
