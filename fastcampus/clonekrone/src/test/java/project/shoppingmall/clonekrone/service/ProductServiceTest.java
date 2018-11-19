@@ -9,6 +9,8 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import project.shoppingmall.clonekrone.domain.Product;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @Transactional
@@ -28,7 +30,7 @@ public class ProductServiceTest {
     @Test
     public void 상위카테고리id로_품목_목록_불러오기() {
         System.out.println("상위카테고리id로_품목_목록_불러오기 시작");
-        Page<Product> products = productService.getProductListBySuperiorId(1L, 0);//카테고리 아이디5인것만
+        Page<Product> products = productService.getProductList(1L, 0);//카테고리 아이디1인것만
         for (Product product : products) {
             System.out.println(product.toString());
         }

@@ -10,6 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import project.shoppingmall.clonekrone.domain.Product;
 import project.shoppingmall.clonekrone.repository.ProductRepository;
 
+import java.util.List;
+
 @Service
 @ConfigurationProperties(prefix = "spring.datasource")
 public class ProductService {
@@ -21,6 +23,7 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
+    //모든 품목 리스트 가져오기
     @Transactional
     public Page<Product> getProductList(int startPage) {
         Pageable pageable = PageRequest.of(startPage, pageSize);
@@ -29,11 +32,20 @@ public class ProductService {
         return products;
     }
 
+    //상위 카테고리 기준으로 품목 리스트 가져오기
     @Transactional
-    public Page<Product> getProductListBySuperiorId(Long superiorId, int startPage) {
-        Pageable pageable = PageRequest.of(startPage, pageSize);
+    public Page<Product> getProductList(Long superiorId, int start) {
+        Pageable pageable = PageRequest.of(start, pageSize);
 
         Page<Product> products = productRepository.findProductByCategorySuperiorId(superiorId, pageable);
+        return products;
+    }
+
+    //이름으로 검색한 목록 리스트 가져오기
+    @Transactional
+    public Page<Product> getProductList(String searchWord, int start) {
+        Pageable pageable = PageRequest.of(start, pageSize);
+        Page<Product> products = productRepository.findByNameContaining(searchWord, pageable);
         return products;
     }
 }
