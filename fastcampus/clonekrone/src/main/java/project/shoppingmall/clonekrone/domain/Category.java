@@ -19,5 +19,5 @@ public class Category {
     private String name;
 
     @Column
-    private int superior_id; //상위 카테고리 아이디
+    private Long superior_id; //상위 카테고리 아이디
 }

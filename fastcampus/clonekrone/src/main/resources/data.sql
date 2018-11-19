@@ -30,7 +30,7 @@ INSERT INTO category (id, name, superior_id)
 VALUES (13, '35%', 12);
 
 INSERT INTO category (id, name)
-VALUES (14, '잼디저트');
+VALUES (14, '디저트');
 INSERT INTO category (id, name, superior_id)
 VALUES (15, '파운드', 14);
 INSERT INTO category (id, name, superior_id)
@@ -41,7 +41,7 @@ VALUES (17, '쿠키', 14);
 INSERT INTO category (id, name)
 VALUES (18, '기타');
 INSERT INTO category (id, name, superior_id)
-VALUES (19, '저당도 수제', 14);
+VALUES (19, '저당도 수제잼', 14);
 -- 카테고리 끝
 
 -- 품목과 해당 옵션

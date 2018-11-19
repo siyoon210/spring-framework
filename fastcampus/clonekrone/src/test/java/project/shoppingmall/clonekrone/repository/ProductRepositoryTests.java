@@ -1,5 +1,6 @@
 package project.shoppingmall.clonekrone.repository;
 
+import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,76 +12,69 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import project.shoppingmall.clonekrone.domain.Product;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import java.util.List;
-
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Transactional
 public class ProductRepositoryTests {
     @Autowired
     ProductRepository productRepository;
-    @PersistenceContext// EntityManagerFactory가 DI 할 수 있도록 어노테이션 설정
-    EntityManager em;
 
     @Test
-    public void findBy를이용한조회해보기테스트() throws Exception {
-        List<Product> products = productRepository.findByName("100% 호밀빵");
-        System.out.println(products.size());
-        for (Product product : products) {
-            System.out.println(product.getName());
-        }
+    public void JPQL을_이용하여_모든_Product조회하기() throws Exception {
+        Pageable pageable = PageRequest.of(0, 3);
+
+        Page<Product> products = productRepository.findProducts(pageable);
+        printPage(products);
     }
+
     @Test
-    public void 이름이포함된Product구하기() throws Exception {
+    public void 이름으로_검색한_Product조회하기() throws Exception {
         Pageable pageable = PageRequest.of(0, 3); //시작페이지0 3개씩 가져오기
 
         Page<Product> products = productRepository.findByNameContaining("호밀", pageable);
-        System.out.println("totalElements: " + products.getTotalElements());
-        System.out.println("totalPages: " + products.getTotalPages());
-        for(Product product : products){
-            System.out.println(product.toString());
-        }
+        printPage(products);
     }
 
     @Test
-    public void 이름이포함된Product구하기테스트2() throws Exception{
-        Pageable pageable = PageRequest.of(1, 3);
-        Page<Product> products = productRepository.findByNameContaining2("호밀빵", pageable);
+    public void id로_Product_한건_조회하기() throws Exception {
+        Product product = productRepository.findProductById(2L);
+        System.out.println(product.toString());
+    }
 
-        System.out.println(products.getTotalElements());
-        System.out.println(products.getTotalPages());
+    @Test
+    public void 카테고리Id로_검색한_Product조회하기() throws Exception {
+        Pageable pageable = PageRequest.of(0,3);
 
-        for(Product product : products){
-            System.out.println(product.toString());
-//            System.out.println(product.getId());
-//            System.out.println(product.getName());
-//            Set<ArticleInfo> articleInfos = articleGroup.getArticleInfos();
-//            for(ArticleInfo articleInfo : articleInfos){
-//                System.out.println(articleInfo.getName());
-//                System.out.println("--------");
-//            }
-            System.out.println("=============");
+        Page<Product> products = productRepository.findProductByCategoryId(2L, pageable);
+        printPage(products);
+    }
+
+    @Test
+    public void 상위카테고리ID로_검색한_Product조회하기() throws Exception {
+        Pageable pageable = PageRequest.of(0,3);
+
+        Page<Product> products = productRepository.findProductByCategorySuperiorId(1L,pageable);
+        printPage(products);
+    }
+
+    private void printPage(Page<?> page) {
+        System.out.println("totalElements: " + page.getTotalElements());
+        System.out.println("totalPages: " + page.getTotalPages());
+        for(Object element : page){
+            System.out.println(element.toString());
         }
     }
 
 //    @Test
-//    public void save() {
-////        10,"35% 크랜베리 호밀 베이글(5개묶음)", 13000, 2, "100g 당 열량 : 226kcal", false, new Date(),3
-//        Product product = new Product();
-//        product.setId(10L);
-//        product.setName("35% 크랜베리 호밀 베이글(5개묶음)");
-//        product.setPrice(13000);
-//        product.setPointRate(2);
-//        product.setNutrient("100g당 열량 : 226kcal");
-//        product.setCutting(false);
-//        Category category = new Category();
-//        category.setId(3L);
-//        product.setCategory(category);
-//        product.setRegdate(new Date());
-//        em.persist(product);
+//    public void 상위카테고리ID로_Product조회하기() throws Exception {
+//        Pageable pageable = PageRequest.of(0, 5); //시작페이지0 5개씩 가져오기
+//        Page<Product> products = productRepository.findProductBySuperiorId(1L, pageable);
+//
+//        System.out.println("totalElements: " + products.getTotalElements());
+//        System.out.println("totalPages: " + products.getTotalPages());
+//        for(Product product : products){
+//            System.out.println(product.toString());
+//        }
 //    }
-
 
 }
