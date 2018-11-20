@@ -44,6 +44,13 @@ INSERT INTO category (id, name, superior_id)
 VALUES (19, '저당도 수제잼', 14);
 -- 카테고리 끝
 
+-- 유저 권한
+INSERT INTO role (id, name)
+VALUES (1, 'USER');
+INSERT INTO role (id, name)
+VALUES (2, 'ADMIND');
+-- 유저 권한 끝
+
 -- 품목과 해당 옵션
 INSERT INTO product (id, name, price, point_rate, nutrient, cutting_option, quantity, regdate, category_id)
 VALUES (1, '100% 호밀빵', 10800, 2, '100%호밀빵 플레인 : 927kcal/450g', true, 200, now(), 2);
@@ -92,3 +99,75 @@ VALUES (13, '100% 양파 통밀 베이글(8개 한세트)', 13500, 2, '열량: 2
 
 INSERT INTO product (id, name, price, point_rate, nutrient, cutting_option, quantity, regdate, category_id)
 VALUES (14, '100% 크랜베리 통밀 베이글(8개 한세트)', 16800, 2, '열량: 211kcal/100g', true, 200, now(), 6);
+-- 품목 끝
+
+-- 회원
+INSERT INTO member (id,
+                    name,
+                    login_id,
+                    password,
+                    birth_date,
+                    gender,
+                    email,
+                    phone_number,
+                    zip_code,
+                    address,
+                    detail_address,
+                    receive_email,
+                    receiveSMS,
+                    point)
+VALUES (1,
+        'admin',
+        'admin',
+        '{bcrypt}$2a$10$WvTFs5LlBFFsEJvy.exYI.JdezT5.z0hKZDPG7ZnNVwZ9GOYNfczm',
+        '2018-11-20',
+        '남자',
+        'webmaster@gmail.com',
+        '01012345678',
+        '12345',
+        '서울특별시',
+        '성수동',
+        true,
+        true,
+        0);
+
+INSERT INTO member_role (member_id, role_id)
+VALUES (1, 1);
+INSERT INTO member_role (member_id, role_id)
+VALUES (1, 2);
+
+INSERT INTO member (id,
+                    name,
+                    login_id,
+                    password,
+                    birth_date,
+                    gender,
+                    email,
+                    phone_number,
+                    zip_code,
+                    address,
+                    detail_address,
+                    receive_email,
+                    receiveSMS,
+                    point)
+VALUES (2,
+        '시윤',
+        'siyoon',
+        '{bcrypt}$2a$10$Wz6HjO.G7ztX2mjd1QfBduuPHx5yh6hdKj0l7pEF.t7usUIiQvB7a',
+        '1990-02-10',
+        '남자',
+        'siyoon210@gmail.com',
+        '01033477208',
+        '12345',
+        '경기도',
+        '군포시',
+        false,
+        true,
+        0);
+
+INSERT INTO member_role (member_id, role_id)
+VALUES (2, 1);
+
+-- 회원 끝
+
+
