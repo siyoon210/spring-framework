@@ -15,7 +15,6 @@ import java.util.List;
 @Service
 @ConfigurationProperties(prefix = "spring.datasource")
 public class ProductService {
-//    @Autowired
     private ProductRepository productRepository;
     private static int pageSize = 3; //한페이지당 불러 올 상품 갯수
 

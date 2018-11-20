@@ -82,7 +82,7 @@ INSERT INTO product (id, name, price, point_rate, nutrient, cutting_option, quan
 VALUES (10, '35% 크랜베리 호밀 베이글(5개묶음)', 13000, 2, '100g당 열량 : 226kcal', true, 200, now(), 4);
 
 INSERT INTO product (id, name, price, point_rate, nutrient, cutting_option, quantity, regdate, category_id)
-VALUES (11, '100% 검은콩 통밀 베(8개 한세트)', 13500, 2, '1개당 열량 : 174kcal', true, 200, now(), 6);
+VALUES (11, '100% 검은콩 통밀 베이글(8개 한세트)', 13500, 2, '1개당 열량 : 174kcal', true, 200, now(), 6);
 
 INSERT INTO product (id, name, price, point_rate, nutrient, cutting_option, quantity, regdate, category_id)
 VALUES (12, '100% 통밀 식빵', 6800, 2, '열량: 200kcal/100g', true, 200, now(), 6);
