@@ -19,7 +19,7 @@ public class Member {
     @Column(length = 30, nullable = false)
     private String name;
 
-    @Column(length = 30, nullable = false)
+    @Column(length = 100, nullable = false)
     private String loginId;
 
     @Column(nullable = false)
@@ -65,4 +65,10 @@ public class Member {
             joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id",nullable = false) ,
             inverseJoinColumns = @JoinColumn(name = "product_id", referencedColumnName = "id",nullable = false) )
     private Set<Product> wishProducts;
+
+    @ManyToMany
+    @JoinTable(name = "member_role",
+            joinColumns = @JoinColumn(name = "member_id", referencedColumnName = "id") ,
+            inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "id") )
+    private Set<Role> roles;
 }
