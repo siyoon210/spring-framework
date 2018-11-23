@@ -16,7 +16,7 @@ import java.util.Collections;
 
 @Component
 public class ClonekroneUserDetailsService implements UserDetailsService {
-    MemberService memberService;
+    private MemberService memberService;
 
     public ClonekroneUserDetailsService(MemberService memberService) {
         this.memberService = memberService;
