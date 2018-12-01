@@ -22,7 +22,7 @@ public class Question {
     private Category category;
 
     @ManyToOne
-    @JoinColumn(name = "BookContent", nullable = false)
+    @JoinColumn(name = "BookContent_id", nullable = false)
     private BookContent bookContent;
 
     @ManyToMany
