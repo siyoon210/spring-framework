@@ -7,22 +7,15 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "choice")
+@Table(name = "role")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Choice {
+public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @ManyToOne
-//    @JoinColumn(name = "question_id", nullable = false)
-//    private Question question;
-
-    @Column(nullable = false)
-    private String content;
-
-    @Column(nullable = false)
-    private Boolean correct;
+    @Column(length = 20, nullable = false, unique = true)
+    private String name;
 }

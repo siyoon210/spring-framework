@@ -18,13 +18,13 @@ public class Passage {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToMany(mappedBy = "passages")
-    private Set<Question> questions;
-
     @Column(length = 100, nullable = false)
     private String type;
 
     //TODO: 현재는 passage type이 텍스트인 경우만 고려 했지만, 그림이나 표인경우는 어떤식으로 구현해야 하는지 필요함
     @Column(nullable = false)
     private String content;
+
+    @Column (nullable = false)//한 문제에 passage가 여러개 일 경우 정렬 순서
+    private int orderBy;
 }

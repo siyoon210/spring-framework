@@ -22,14 +22,18 @@ public class Question {
     private Category category;
 
     @ManyToOne
-    @JoinColumn(name = "BookContent", nullable = false)
+    @JoinColumn(name = "BookContent_id", nullable = false)
     private BookContent bookContent;
 
     @ManyToMany
-    @JoinTable(name = "question_passage", //매핑(연결) 테이블의 이름
+    @JoinTable(name = "question_passage",
             joinColumns = @JoinColumn(name = "question_id"),
             inverseJoinColumns = @JoinColumn(name = "passage_id"))
     private Set<Passage> passages;
+
+    @OneToMany
+    @JoinColumn(name = "question_id")
+    private Set<Choice> choices;
 
     @Column(nullable = false)
     private int bookNumber;
