@@ -12,7 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
 import project.prototype.pat.PatProtoType.domain.Publisher;
 
-import static project.prototype.pat.PatProtoType.repository.PrintPage.printPage;
+import static project.prototype.pat.PatProtoType.repository.Print.printPage;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest

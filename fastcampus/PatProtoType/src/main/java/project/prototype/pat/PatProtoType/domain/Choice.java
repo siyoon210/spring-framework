@@ -16,9 +16,9 @@ public class Choice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "question_id", nullable = false)
-    private Question question;
+//    @ManyToOne
+//    @JoinColumn(name = "question_id", nullable = false)
+//    private Question question;
 
     @Column(nullable = false)
     private String content;

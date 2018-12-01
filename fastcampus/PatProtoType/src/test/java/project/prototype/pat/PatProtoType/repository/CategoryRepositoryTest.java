@@ -10,37 +10,31 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.transaction.annotation.Transactional;
-import project.prototype.pat.PatProtoType.domain.Book;
+import project.prototype.pat.PatProtoType.domain.BookContent;
+import project.prototype.pat.PatProtoType.domain.Category;
+
+import java.util.Set;
 
 import static project.prototype.pat.PatProtoType.repository.Print.printPage;
+import static project.prototype.pat.PatProtoType.repository.Print.printSet;
 
 @RunWith(SpringRunner.class)
 @DataJpaTest
 @Transactional
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-public class BookRepositoryTest {
+public class CategoryRepositoryTest {
     @Autowired
-    private BookRepository bookRepository;
+    private CategoryRepository categoryRepository;
 
     @Test
-    public void 책_모든_목록_조회하기() throws Exception {
-        Pageable pageable = PageRequest.of(0, 3);
-
-        Page<Book> books = bookRepository.findBook(pageable);
-        printPage(books);
+    public void id로_카테고리_한건_조회하기() throws Exception {
+        Category category = categoryRepository.findCategoryById(4L);
+        System.out.println(category.toString());
     }
 
     @Test
-    public void name으로_책_검색하여_조회하기() throws Exception {
-        Pageable pageable = PageRequest.of(0, 3);
-
-        Page<Book> books = bookRepository.findBookByNameContaining("마스터", pageable);
-        printPage(books);
-    }
-
-    @Test
-    public void id로_책_한건_조회하기() throws Exception {
-        Book book = bookRepository.findBookById(1L);
-        System.out.println(book.toString());
+    public void superiorId로_하위_카테고리_목록_조회하기() throws Exception {
+        Set<Category> categorys = categoryRepository.findCategoryBySuperiorId(1L);
+        printSet(categorys);
     }
 }

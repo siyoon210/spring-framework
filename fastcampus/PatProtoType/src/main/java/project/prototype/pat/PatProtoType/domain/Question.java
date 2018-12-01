@@ -31,6 +31,10 @@ public class Question {
             inverseJoinColumns = @JoinColumn(name = "passage_id"))
     private Set<Passage> passages;
 
+    @OneToMany
+    @JoinColumn(name = "question_id")
+    private Set<Choice> choices;
+
     @Column(nullable = false)
     private int bookNumber;
 
