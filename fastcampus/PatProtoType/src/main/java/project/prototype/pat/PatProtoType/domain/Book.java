@@ -28,7 +28,7 @@ public class Book {
     private Date publicationDate;
 
     @Column(length = 100, nullable = false)
-    private String autor;
+    private String author;
 
     @Column(length = 100)
     private String ISBN; //국제표준도서번호
