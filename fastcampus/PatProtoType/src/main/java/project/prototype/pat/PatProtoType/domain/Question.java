@@ -26,7 +26,7 @@ public class Question {
     private BookContent bookContent;
 
     @ManyToMany
-    @JoinTable(name = "question_passage", //매핑(연결) 테이블의 이름
+    @JoinTable(name = "question_passage",
             joinColumns = @JoinColumn(name = "question_id"),
             inverseJoinColumns = @JoinColumn(name = "passage_id"))
     private Set<Passage> passages;

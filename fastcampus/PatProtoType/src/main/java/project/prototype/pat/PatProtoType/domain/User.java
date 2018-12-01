@@ -23,13 +23,13 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id"))
     private Set<Role> roles;
 
-    @Column(nullable = false)
+    @Column(unique = true, nullable = false)
     private String email;
 
     @Column(nullable = false)
     private String password;
 
-    @Column(length = 100, nullable = false)
+    @Column(unique = true, length = 100, nullable = false)
     private String nickname;
 
     @Column(length = 100, nullable = false)
