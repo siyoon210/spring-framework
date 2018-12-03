@@ -5,10 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
-import project.prototype.pat.PatProtoType.domain.Passage;
 import project.prototype.pat.PatProtoType.domain.Question;
-
-import java.util.Set;
 
 public interface QuestionRepository extends JpaRepository<Question, Long> {
     //책 목차 id로 문제 조회하기

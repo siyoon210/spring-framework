@@ -21,11 +21,9 @@ public class Result {
     private QuizRecord quizRecord;
 
     @ManyToOne
-    @JoinColumn(name = "Question", nullable = false)
+    @JoinColumn(name = "question_id", nullable = false)
     private Question question;
 
     @Column(nullable = false)
     private Boolean correct;
-
-
 }
