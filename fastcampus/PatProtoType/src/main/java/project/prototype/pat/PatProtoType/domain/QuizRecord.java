@@ -24,6 +24,7 @@ public class QuizRecord {
     @Column(nullable = false)
     private Date date;
 
-
+    @Column
+    private int score;
 }
 

@@ -54,8 +54,8 @@ VALUES (2, 2);
 -- 유저 끝
 
 -- 문제, 지문, 보기
-INSERT INTO question (category_id, book_content_id, book_number, query)
-VALUES (4, 6, 1, '다음 지문을 보고 밑줄에 해당되는 유의어를 고르시오');
+INSERT INTO question (category_id, book_content_id, book_number, query, score)
+VALUES (4, 6, 1, '다음 지문을 보고 밑줄에 해당되는 유의어를 고르시오', 5);
 INSERT INTO passage (type, content, order_by)
 VALUES ('text',
         '동해물과 백두산이 마르고 닳도록 하나님이 보우하사 우리 나라만세 무궁화 삼천리 화려 강산 <u>대한</u>사람 대한으로 길이 보전하세 남산 위에 저 나무 철갑을 두른 듯 바람 서리 불변함은 우리 기상일세 무궁화 삼천리 화려 강산 대한 사람 대한으로 길이 보전하세',
@@ -73,8 +73,8 @@ VALUES (1, '이것이 오답입니다! 하하하 오답입니다 오답 오답!!
 INSERT INTO choice (question_id, content, correct)
 VALUES (1, '이건 정답입니다. 샘플데이터 넣기 너무 힘드네요.', true);
 
-INSERT INTO question (category_id, book_content_id, book_number, query)
-VALUES (4, 6, 2, '다음 지문을 보고 밑줄에 해당되는 유의어를 고르시오');
+INSERT INTO question (category_id, book_content_id, book_number, query, score)
+VALUES (4, 6, 2, '다음 지문을 보고 밑줄에 해당되는 유의어를 고르시오', 5);
 INSERT INTO passage (type, content, order_by)
 VALUES ('text',
         '저번에 말이야 객체와 인스턴스의 차이점이 뭔지아냐고 병수가 물어보더라고, 아주 재밌었어, 결국 <u>객체</u>도 영어로는 오브젝트니까 별개의 단어인데 우리는 혼용해서 쓰고 있자나? 인스턴스는 특정 클래스로 부터 나온 객체임을 강조하고 싶을때 사용한다고 자바의 정석에서는 그렇게 써있었어, 내가 이런말을 왜하냐면 아무말이나 써야하니까 갑자기 생각나는 내용을 써봤어 복습도 되고 좋다.',
@@ -92,8 +92,8 @@ VALUES (2, '이건 정답입니다. 샘플데이터 넣기 너무 힘드네요.'
 INSERT INTO choice (question_id, content, correct)
 VALUES (2, '이것이 오답입니다! 하하하 오답입니다 오답 오답!! 덩실덩실', false);
 
-INSERT INTO question (category_id, book_content_id, book_number, query)
-VALUES (4, 6, 3, '다음 지문을 보고 밑줄에 해당되는 유의어를 고르시오');
+INSERT INTO question (category_id, book_content_id, book_number, query, score)
+VALUES (4, 6, 3, '다음 지문을 보고 밑줄에 해당되는 유의어를 고르시오', 5);
 INSERT INTO passage (type, content, order_by)
 VALUES ('text',
         'JPA를 쓰면서도 너무 어려워 그리고 스프링에서 JPA셋팅을 직접 해줘야한다며? 우리 스프링으로 할꺼잖아 근데 <u>프로토타입</u>은 그냥 부트로 해보고 있어 셋팅하기가 넘 무서워서 해보긴 해야하는데 JPA 넘 어렵다. 이번에 꼭 마스터 해보자 화이팅 짱짱맨',
@@ -112,5 +112,18 @@ INSERT INTO choice (question_id, content, correct)
 VALUES (3, '이것이 오답입니다! 하하하 오답입니다 오답 오답!! 덩실덩실', false);
 -- 문제, 지문, 보기 끝
 
+-- 시험기록
+INSERT INTO quiz_record (user_id, date, score)
+VALUES (2, now(), 10);
+-- 시험기록 끝
+
+-- result
+INSERT INTO result(quiz_record_id, question_id, correct)
+VALUES (1, 1, true);
+INSERT INTO result(quiz_record_id, question_id, correct)
+VALUES (1, 2, true);
+INSERT INTO result(quiz_record_id, question_id, correct)
+VALUES (1, 3, false);
+-- result 끝
 
 
