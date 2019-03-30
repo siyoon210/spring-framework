@@ -12,6 +12,7 @@ public class Main {
         ApplicationContext context = new GenericXmlApplicationContext("applicationContext.xml");
 
         UserDao dao = context.getBean("userDao", UserDao.class);
+        dao.deleteAll();
 
         User user = new User();
         user.setId("bekko");
