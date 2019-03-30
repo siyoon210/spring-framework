@@ -1,11 +1,7 @@
 package springbook.user;
 
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.GenericApplicationContext;
 import org.springframework.context.support.GenericXmlApplicationContext;
-import springbook.user.dao.CountingConnectionMaker;
-import springbook.user.dao.CountingDaoFactory;
 import springbook.user.dao.UserDao;
 import springbook.user.domain.User;
 
@@ -18,8 +14,8 @@ public class Main {
         UserDao dao = context.getBean("userDao", UserDao.class);
 
         User user = new User();
-        user.setId("puru");
-        user.setName("푸르");
+        user.setId("bekko");
+        user.setName("배코");
         user.setPassword("1234");
 
         dao.add(user);
@@ -29,7 +25,7 @@ public class Main {
         User user2 = dao.get(user.getId());
         System.out.println(user2.getName());
 
-//        CountingConnectionMaker ccm = context.getBean("connectionMaker", CountingConnectionMaker.class);
+//        CountingConnectionMaker ccm = context.getBean("dataSource", CountingConnectionMaker.class);
 //        System.out.println("Connection counter : " + ccm.getCounter());
     }
 }

@@ -3,10 +3,16 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="connectionMaker" class="springbook.user.dao.DConnectionMaker"/>
+    <bean id="datasource"
+          class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+        <property name="driverClass" value="org.mariadb.jdbc.Driver"/>
+        <property name="url" value="jdbc:mysql://localhost/springbook"/>
+        <property name="username" value="spring"/>
+        <property name="password" value="book"/>
+    </bean>
 
     <bean id="userDao" class="springbook.user.dao.UserDao">
-        <property name="connectionMaker" ref="connectionMaker"/>
+        <property name="datasource" ref="datasource"/>
     </bean>
 
 
