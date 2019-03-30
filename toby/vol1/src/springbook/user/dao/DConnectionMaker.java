@@ -9,7 +9,7 @@ public class DConnectionMaker implements ConnectionMaker{
     public Connection makeConnection() throws ClassNotFoundException, SQLException {
         Class.forName("org.mariadb.jdbc.Driver");
         Connection c = DriverManager.getConnection(
-                "jdbc:mysql//localhost/springbook", "spring", "book"
+                "jdbc:mysql://localhost/springbook", "spring", "book"
         );
         return c;
     }
