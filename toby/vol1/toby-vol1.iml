@@ -8,5 +8,12 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="mariadb-java-client-2.4.1" level="project" />
+    <orderEntry type="library" name="com.springsource.net.sf.cglib-2.2.0" level="project" />
+    <orderEntry type="library" name="com.springsource.org.apache.commons.logging-1.1.1" level="project" />
+    <orderEntry type="library" name="spring-asm-3.0.7.release" level="project" />
+    <orderEntry type="library" name="spring-beans-3.0.7.release" level="project" />
+    <orderEntry type="library" name="spring-context-3.0.7.release" level="project" />
+    <orderEntry type="library" name="spring-expression-3.0.7.release" level="project" />
+    <orderEntry type="library" name="spring-core-3.0.7.release" level="project" />
   </component>
 </module>
