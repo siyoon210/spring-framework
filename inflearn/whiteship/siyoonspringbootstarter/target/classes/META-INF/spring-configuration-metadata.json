@@ -1,0 +1,23 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "me.siyoon.SingleManProperties",
+      "name": "singleman",
+      "type": "me.siyoon.SingleManProperties"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "me.siyoon.SingleManProperties",
+      "defaultValue": 0,
+      "name": "singleman.how-long-days",
+      "type": "java.lang.Integer"
+    },
+    {
+      "sourceType": "me.siyoon.SingleManProperties",
+      "name": "singleman.name",
+      "type": "java.lang.String"
+    }
+  ]
+}
