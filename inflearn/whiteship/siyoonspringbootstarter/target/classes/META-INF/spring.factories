@@ -1,2 +1,2 @@
 org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
-    me.siyoon.SingleManConfiguration 
+    me.siyoon.SingleManConfiguration
