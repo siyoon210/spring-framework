@@ -1,11 +1,14 @@
 package me.siyoon;
 
-import org.springframework.boot.context.event.ApplicationStartingEvent;
+import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.ApplicationListener;
+import org.springframework.stereotype.Component;
 
-public class SampleListener implements ApplicationListener<ApplicationStartingEvent> {
+@Component
+public class SampleListener implements ApplicationListener<ApplicationStartedEvent> {
+
     @Override
-    public void onApplicationEvent(final ApplicationStartingEvent applicationStartingEvent) {
-        System.out.println("이벤트 리스너가 실행되었다~!");
+    public void onApplicationEvent(final ApplicationStartedEvent applicationStartedEvent) {
+        System.out.println("ApplicationStartedEvent가 감지되었다!");
     }
 }
