@@ -8,7 +8,7 @@ public class Application {
     public static void main(String[] args) {
         SpringApplication springApplication = new SpringApplication(Application.class);
         springApplication.setBanner((environment, sourceClass, out) -> System.out.println("뚜비두밤~"));
+        springApplication.addListeners(new SampleListener());
         springApplication.run(args);
-
     }
 }
