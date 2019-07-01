@@ -8,6 +8,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.view;
 
@@ -20,8 +21,17 @@ public class MainControllerTest {
     @Test
     public void hello() throws Exception {
         mockMvc.perform(get("/hello"))
+                .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("hello"));
+    }
+
+    @Test
+    public void my() throws Exception {
+        mockMvc.perform(get("/my"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(view().name("my"));
     }
 
 }
