@@ -11,7 +11,8 @@ import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
 @Controller
 public class HateoasTestController {
     @GetMapping("/hello-hateoas")
-    public @ResponseBody Resource<Hello> hello() {
+    public @ResponseBody
+    Resource<Hello> hello() {
         Hello hello = new Hello();
         hello.setId(1);
         hello.setName("siyoon");
@@ -22,7 +23,7 @@ public class HateoasTestController {
         return helloResource;
     }
 
-    static class Hello{
+    static class Hello {
         private String name;
         private int id;
 

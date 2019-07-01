@@ -5,7 +5,7 @@ import org.springframework.stereotype.Component;
 
 @Component
 @ConfigurationProperties("siyoon")
-public class MyProperties   {
+public class MyProperties {
     private String name;
     private int level;
     private String job;

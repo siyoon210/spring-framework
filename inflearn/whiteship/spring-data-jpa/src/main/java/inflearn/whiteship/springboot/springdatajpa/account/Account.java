@@ -13,7 +13,8 @@ import javax.persistence.Id;
 @Setter
 @EqualsAndHashCode(of = "id")
 public class Account {
-    @Id @GeneratedValue
+    @Id
+    @GeneratedValue
     private long id;
     private String username;
     private String password;

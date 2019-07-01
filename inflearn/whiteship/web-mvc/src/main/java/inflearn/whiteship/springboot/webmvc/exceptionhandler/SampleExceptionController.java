@@ -14,7 +14,8 @@ public class SampleExceptionController {
     }
 
     @ExceptionHandler(SampleException.class)
-    public @ResponseBody String handleSampleException() {
+    public @ResponseBody
+    String handleSampleException() {
         return "sample exception~!";
     }
 }
