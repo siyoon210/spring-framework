@@ -1,0 +1,6 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+greeting: Hello %s~!! from Prod
