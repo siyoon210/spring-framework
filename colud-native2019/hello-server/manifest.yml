@@ -1,7 +1,7 @@
----
 applications:
-  - name: hello-server
-    memory: 1GB
-    instances: 1
-    path: target/hello-server-0.0.1-SNAPSHOT.jar
-    random-route: true
+- name: hello-server
+  memory: 1GB
+  instances: 1
+  path: target/hello-server-0.0.1-SNAPSHOT.jar
+  random-route: true
+  services: [config-sercver]
