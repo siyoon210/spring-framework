@@ -14,7 +14,7 @@ public class HelloController {
     public String sayHello(@RequestParam(value = "name", defaultValue = "World") String toWho) {
         final String result = String.format(greeting, toWho);
         System.out.println(result);
-        return "Hello World!";
+        return result;
     }
 
     @RequestMapping("/")
