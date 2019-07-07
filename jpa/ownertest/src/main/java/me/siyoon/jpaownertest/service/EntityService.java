@@ -26,4 +26,13 @@ public class EntityService {
 
         return entityBRepository.save(entityB);
     }
+
+    EntityA setOwner(String aName, String bName) {
+        final EntityA entityA = entityARepository.findByName(aName);
+        final EntityB entityB = entityBRepository.findByName(bName);
+        entityA.setEntityB(entityB);
+        entityB.setEntityA(entityA);
+
+        return entityA;
+    }
 }
