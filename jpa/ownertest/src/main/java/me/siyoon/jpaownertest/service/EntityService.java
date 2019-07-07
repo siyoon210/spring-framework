@@ -13,17 +13,17 @@ public class EntityService {
     private final EntityARepository entityARepository;
     private final EntityBRepository entityBRepository;
 
-    void createEntityA(String name) {
+     EntityA createEntityA(String name) {
         EntityA entityA = new EntityA();
         entityA.setName(name);
 
-        entityARepository.save(entityA);
+        return entityARepository.save(entityA);
     }
 
-    void createEntityB(String name) {
+    EntityB createEntityB(String name) {
         EntityB entityB = new EntityB();
         entityB.setName(name);
 
-        entityBRepository.save(entityB);
+        return entityBRepository.save(entityB);
     }
 }
