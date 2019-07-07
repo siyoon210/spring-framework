@@ -3,19 +3,18 @@ package me.siyoon.jpaownertest.entity;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 @Getter
 @Setter
-public class Student {
+public class EntityB {
     @Id
     @GeneratedValue
     private Long id;
 
     private String name;
 
-    private Teacher teacher;
+    @OneToOne(mappedBy = "entityB")
+    private EntityA entityA;
 }
