@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)//실제 서블릿을 띄우지 않고 목을 사용한다.
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.MOCK)//실제 서블릿을 띄우지 않고 목을 사용한다.(디펄트 설정으로 되어있다.)
 @AutoConfigureMockMvc
 public class SampleControllerTest {
     @Autowired
