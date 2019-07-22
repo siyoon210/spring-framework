@@ -27,5 +27,14 @@ public class MyControllerTest {
                 .andExpect(status().isOk())
                 .andDo(print());
     }
+
+    @Test
+    public void helloIdTest() throws Exception{
+        String name = "siyoon";
+
+        mockMvc.perform(get("/hello/{name}", name).accept(MediaType.TEXT_HTML))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
 }
 
