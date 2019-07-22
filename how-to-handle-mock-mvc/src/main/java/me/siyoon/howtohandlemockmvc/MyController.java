@@ -14,7 +14,13 @@ public class MyController {
 
     @GetMapping("/hello/{name}")
     public @ResponseBody
-    String helloId(@PathVariable String name) {
+    String helloName(@PathVariable String name) {
         return "hello " + name;
+    }
+
+    @GetMapping("/hello/{name1}/{name2}")
+    public @ResponseBody
+    String helloName(@PathVariable(name = "name1") String name1, @PathVariable(name = "name2") String name2) {
+        return "hello " + name1 + ", " + name2;
     }
 }

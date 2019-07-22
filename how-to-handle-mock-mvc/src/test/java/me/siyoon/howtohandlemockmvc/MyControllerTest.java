@@ -9,6 +9,10 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -29,10 +33,20 @@ public class MyControllerTest {
     }
 
     @Test
-    public void helloIdTest() throws Exception{
+    public void helloNameTest() throws Exception{
         String name = "siyoon";
 
         mockMvc.perform(get("/hello/{name}", name).accept(MediaType.TEXT_HTML))
+                .andExpect(status().isOk())
+                .andDo(print());
+    }
+
+    @Test
+    public void helloNameTest2() throws Exception{
+        String name1 = "siyoon";
+        String name2 = "puru";
+
+        mockMvc.perform(get("/hello/{name1}/{name2}", name1, name2).accept(MediaType.TEXT_HTML))
                 .andExpect(status().isOk())
                 .andDo(print());
     }
