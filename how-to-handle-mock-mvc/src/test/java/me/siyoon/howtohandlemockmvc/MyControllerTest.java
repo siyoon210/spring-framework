@@ -37,19 +37,19 @@ public class MyControllerTest {
         final MockMvc build = MockMvcBuilders.standaloneSetup(MyController.class).alwaysExpect(MockMvcResultMatchers.status().isOk()).build();
     }
 
-@Test
-public void helloTest() throws Exception {
+    @Test
+    public void helloTest() throws Exception {
 //        mockMvc.perform(get("/hello").accept(MediaType.TEXT_HTML))
 //                .andExpect(status().isOk())
 //                .andDo(print());
 
-    //파라머티로 뭐가 들어가는지 알기가 어려운데 실제 객체를 넣으면 어떤 메소드가 있는지 IDE로 쉽게 알 수 있다 개꿀팁
-    mockMvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.TEXT_HTML))
-            .andExpect(MockMvcResultMatchers.status().isOk())
-            .andDo(MockMvcResultHandlers.print());
+        //파라머티로 뭐가 들어가는지 알기가 어려운데 실제 객체를 넣으면 어떤 메소드가 있는지 IDE로 쉽게 알 수 있다 개꿀팁
+        mockMvc.perform(MockMvcRequestBuilders.get("/hello").accept(MediaType.TEXT_HTML))
+                .andExpect(MockMvcResultMatchers.status().isOk())
+                .andDo(MockMvcResultHandlers.print());
 
-    System.out.println("mockMvc = " + mockMvc.getDispatcherServlet().getEnvironment().toString());
-}
+        System.out.println("mockMvc = " + mockMvc.getDispatcherServlet().getEnvironment().toString());
+    }
 
     @Test
     public void helloNameTest() throws Exception {
@@ -70,12 +70,12 @@ public void helloTest() throws Exception {
                 .andDo(print());
     }
 
-@Test
-public void helloModelTest() throws Exception {
-    mockMvc.perform(get("/hello").accept(MediaType.TEXT_HTML))
-            .andExpect(status().isOk())
-            .andExpect(MockMvcResultMatchers.model().attribute("name", "siyoon"))
-            .andDo(print());
-}
+    @Test
+    public void helloModelTest() throws Exception {
+        mockMvc.perform(get("/hello").accept(MediaType.TEXT_HTML))
+                .andExpect(status().isOk())
+                .andExpect(MockMvcResultMatchers.model().attribute("name", "siyoon"))
+                .andDo(print());
+    }
 }
 
