@@ -2,7 +2,7 @@ package me.siyoon.livebeansettertest.Music;
 
 import org.springframework.stereotype.Component;
 
-@Component
+@Component(value = "muzic1")
 public class Music1 implements Music{
     @Override
     public void playing() {
