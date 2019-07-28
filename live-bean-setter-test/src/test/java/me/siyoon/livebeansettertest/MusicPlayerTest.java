@@ -18,4 +18,11 @@ public class MusicPlayerTest {
     public void playingAllMusic() {
         musicPlayer.playingAllMusic();
     }
+
+    @Test
+    public void playingSpecificMusic() {
+        String name = "muzic1";
+
+        musicPlayer.playingSpecificMusic(name);
+    }
 }

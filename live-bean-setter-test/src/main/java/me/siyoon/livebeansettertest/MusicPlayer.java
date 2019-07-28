@@ -9,12 +9,16 @@ import java.util.Map;
 @Controller
 @RequiredArgsConstructor
 public class MusicPlayer {
-    private final Map<String, Music> music;
+    private final Map<String, Music> musics;
 
-    public void playingAllMusic() {
-        music.forEach((key, value) -> {
+    void playingAllMusic() {
+        musics.forEach((key, value) -> {
             System.out.println("key = " + key);
             value.playing();
         });
+    }
+
+    void playingSpecificMusic(String name) {
+        musics.get(name).playing();
     }
 }
