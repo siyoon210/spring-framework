@@ -8,6 +8,8 @@ import org.springframework.web.client.RestTemplate;
 
 @Controller
 public class TistoryApiClient {
+    private static final String APP_ID = "76a2f883a9b9caf68d6c7223481a44fd"; //client id 라고도 한다.
+    private static final String CALL_BACK_URI = "http://localhost:5000/callback"; //redirect uri 라고도 한다.
     private final RestTemplate restTemplate;
 
     public TistoryApiClient() {
@@ -15,14 +17,12 @@ public class TistoryApiClient {
     }
 
     /**
-     * 인증 요청 및 Authentication code 발급
+     * 인증 요청하는 페이지 주소 생성 (Authentication code 발급받기 위한 동의 페이지)
      * https://tistory.github.io/document-tistory-apis/auth/authorization_code.html
      */
-    public void getAuthCode() {
-        final String appId = "76a2f883a9b9caf68d6c7223481a44fd";
-        final String callBackUri = "http://localhost:5000/callback";
+    public void printAuthCodeAgreementPageUri() {
         final String url = "https://www.tistory.com/oauth/authorize?client_id="
-                + appId + "&redirect_uri=" + callBackUri + "&response_type=code";
+                + APP_ID + "&redirect_uri=" + CALL_BACK_URI + "&response_type=code";
 
         System.out.println(url);
 
@@ -31,6 +31,9 @@ public class TistoryApiClient {
         //ex http://localhost:5000/callback?code=908aae3bebc80055310bd1f1a04290201eb001a7e6bad11652b5a419ab2a4b2810e46227&state=
     }
 
+    /**
+     * 티스토리에서 보내주는 auth code 를 받는 콜백 경로
+     */
     @GetMapping("/callback")
     @ResponseBody
     public String callBack(@RequestParam(required = false) String code) {
