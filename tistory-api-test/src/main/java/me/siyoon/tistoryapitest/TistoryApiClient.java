@@ -1,9 +1,12 @@
 package me.siyoon.tistoryapitest;
 
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-@Component
+@Controller
 public class TistoryApiClient {
     private final RestTemplate restTemplate;
 
@@ -26,5 +29,12 @@ public class TistoryApiClient {
         //이 행위는 블로그 주인이 api를 통한 접근을 허용 할 것인지 묻는 페이지로 가는 것이구나
         //인증된 블로그 유저(주인이)가 '허가하기'를 누르면 콜백 uri로 code를 보내준다.
         //ex http://localhost:5000/callback?code=908aae3bebc80055310bd1f1a04290201eb001a7e6bad11652b5a419ab2a4b2810e46227&state=
+    }
+
+    @GetMapping("/callback")
+    @ResponseBody
+    public String callBack(@RequestParam(required = false) String code) {
+        System.out.println("code = " + code);
+        return code;
     }
 }
