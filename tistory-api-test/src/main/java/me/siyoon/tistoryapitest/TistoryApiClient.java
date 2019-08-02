@@ -50,14 +50,14 @@ public class TistoryApiClient {
     private void getAccessToekn(String code) {
         final String url = "https://www.tistory.com/oauth/" + "access_token"
                 + "?client_id=" + APP_ID
-                + "&client_secret" + SECRET_KEY
+                + "&client_secret=" + SECRET_KEY
                 + "&redirect_uri=" + CALL_BACK_URI
                 + "&code=" + code
                 + "&grant_type=authorization_code"; //Implicit 방식과 구분하기 위해 사용하며 항상 authorization_code를 사용합니다.
 
         System.out.println("url = " + url);
 
-//        final Object forObject = restTemplate.getForObject(url, Object.class);
-//        System.out.println("forObject = " + forObject);
+        final Object forObject = restTemplate.getForObject(url, Object.class);
+        System.out.println("forObject = " + forObject);
     }
 }

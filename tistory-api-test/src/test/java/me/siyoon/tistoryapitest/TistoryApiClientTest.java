@@ -13,7 +13,7 @@ public class TistoryApiClientTest {
     private TistoryApiClient apiClient;
 
     @Test
-    public void getAuthCode() {
+    public void printAuthCodePageUri() {
         apiClient.printAuthCodeAgreementPageUri();
     }
 }
