@@ -1,5 +1,7 @@
 package me.siyoon.tistoryapitest;
 
+import lombok.Setter;
+import lombok.ToString;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -24,6 +26,7 @@ public class TistoryApiClient {
     public void printAuthCodeAgreementPageUri() {
         final String url = "https://www.tistory.com/oauth/authorize?client_id="
                 + APP_ID + "&redirect_uri=" + CALL_BACK_URI + "&response_type=code";
+        //https://www.tistory.com/oauth/authorize?client_id=76a2f883a9b9caf68d6c7223481a44fd&redirect_uri=http://localhost:5000/callback&response_type=code
 
         System.out.println(url);
 
@@ -37,9 +40,9 @@ public class TistoryApiClient {
      */
     @GetMapping("/callback")
     @ResponseBody
-    public String callBack(@RequestParam(required = false) String code) {
+    public String callBack(@RequestParam String code) {
         System.out.println("code = " + code);
-        getAccessToekn(code);
+        getAccessToken(code);
         return code;
     }
 
@@ -47,7 +50,7 @@ public class TistoryApiClient {
      * 전달받은 Auth Code 로 Access Token 발급받기
      * https://tistory.github.io/document-tistory-apis/auth/authorization_code.html
      */
-    private void getAccessToekn(String code) {
+    private void getAccessToken(String code) {
         final String url = "https://www.tistory.com/oauth/" + "access_token"
                 + "?client_id=" + APP_ID
                 + "&client_secret=" + SECRET_KEY
@@ -57,7 +60,13 @@ public class TistoryApiClient {
 
         System.out.println("url = " + url);
 
-        final Object forObject = restTemplate.getForObject(url, Object.class);
-        System.out.println("forObject = " + forObject);
+        final AccessToken accessToken = restTemplate.getForObject(url, AccessToken.class);
+        System.out.println("accessToken = " + accessToken);
+    }
+
+    @ToString
+    @Setter
+    private static class AccessToken{
+        private String accessToken;
     }
 }
