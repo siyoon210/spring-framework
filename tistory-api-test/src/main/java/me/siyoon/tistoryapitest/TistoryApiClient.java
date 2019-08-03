@@ -2,11 +2,15 @@ package me.siyoon.tistoryapitest;
 
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Controller
 public class TistoryApiClient {
@@ -60,13 +64,7 @@ public class TistoryApiClient {
 
         System.out.println("url = " + url);
 
-        final AccessToken accessToken = restTemplate.getForObject(url, AccessToken.class);
-        System.out.println("accessToken = " + accessToken);
-    }
-
-    @ToString
-    @Setter
-    private static class AccessToken{
-        private String accessToken;
+        final Map map = restTemplate.getForObject(url, Map.class);
+        System.out.println("\"access_token\") = " + map.get("access_token"));
     }
 }
