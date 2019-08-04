@@ -1,15 +1,11 @@
 package me.siyoon.tistoryapitest;
 
-import lombok.Setter;
-import lombok.ToString;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Controller
@@ -18,6 +14,7 @@ public class TistoryApiClient {
     private static final String CALL_BACK_URI = "http://localhost:5000/callback"; //redirect uri 라고도 한다.
     private static final String SECRET_KEY = "76a2f883a9b9caf68d6c7223481a44fd87ee4dacbb700fce5f22a3bac74494189e023038";
     private final RestTemplate restTemplate;
+    private String accessToken;
 
     public TistoryApiClient() {
         this.restTemplate = new RestTemplate();
@@ -47,7 +44,7 @@ public class TistoryApiClient {
     public String callBack(@RequestParam String code) {
         System.out.println("code = " + code);
         getAccessToken(code);
-        return code;
+        return "Access Token : " + accessToken;
     }
 
     /**
@@ -65,6 +62,19 @@ public class TistoryApiClient {
         System.out.println("url = " + url);
 
         final Map map = restTemplate.getForObject(url, Map.class);
-        System.out.println("\"access_token\") = " + map.get("access_token"));
+        this.accessToken = map.get("access_token").toString();
+        System.out.println("\"access_token\" = " + this.accessToken);
+    }
+
+    @GetMapping("/blog/info")
+    @ResponseBody
+    public String getBlogInfo() {
+        final String url = "https://www.tistory.com/apis/blog/info"
+                + "?access_token=" + accessToken
+                 +"&output=json";
+
+        System.out.println("url = " + url);
+        final Map forObject = restTemplate.getForObject(url, Map.class);
+        return forObject.toString();
     }
 }
