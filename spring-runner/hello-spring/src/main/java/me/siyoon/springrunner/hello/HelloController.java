@@ -13,11 +13,16 @@ public class HelloController {
 	public ModelAndView hello(@RequestParam("name") String name) {
 		HelloModel model = new HelloModel(name);
 		
-		View view = new JstlView("/WEB-INF/templates/HelloView.jsp");
-		ModelAndView mav = new ModelAndView();
-		mav.setView(view);
-		mav.addObject("hello", model);
+//		View view = new JstlView("/WEB-INF/templates/HelloView.jsp");
+		String viewName = "/WEB-INF/templates/HelloView.jsp";
 		
+		
+		ModelAndView mav = new ModelAndView();
+//		mav.setView(view);
+		mav.setViewName(viewName);
+		
+		
+		mav.addObject("hello", model);
 		return mav;
 	}
 }
