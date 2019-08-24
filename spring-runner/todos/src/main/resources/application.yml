@@ -1,0 +1,10 @@
+logging:
+  level:
+    org:
+      springframework:
+        boot: INFO
+        web: DEBUG
+    todoapp: DEBUG
+    
+site:
+  author: Siyoon

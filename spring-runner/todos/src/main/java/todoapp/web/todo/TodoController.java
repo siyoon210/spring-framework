@@ -1,6 +1,7 @@
 package todoapp.web.todo;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -14,9 +15,9 @@ public class TodoController {
 		this.site = site;
 	}
 	
-	@RequestMapping("/todos")
-	public ModelAndView todos() {
-		return new ModelAndView("todos", "site", site);
+	@RequestMapping("/todos") 
+	public void todos(Model model) {
+		model.addAttribute(site);
 	}
 
 }
