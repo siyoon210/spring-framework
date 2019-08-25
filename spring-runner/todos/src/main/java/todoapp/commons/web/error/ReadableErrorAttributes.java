@@ -4,6 +4,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.web.servlet.error.DefaultErrorAttributes;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
+import org.springframework.context.MessageSource;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
 import org.springframework.web.context.request.WebRequest;
@@ -26,25 +27,33 @@ import java.util.Map;
 public class ReadableErrorAttributes implements ErrorAttributes, HandlerExceptionResolver, Ordered {
 
     private final Logger log = LoggerFactory.getLogger(this.getClass());
-    private final DefaultErrorAttributes delegate;
+    private final DefaultErrorAttributes delegate = new DefaultErrorAttributes();
+    private final MessageSource messageSource;
 
-    public ReadableErrorAttributes() {
-        this(false);
+    public ReadableErrorAttributes(MessageSource messageSource) {
+//    	this(false);
+    	this.messageSource = messageSource;
     }
 
-    public ReadableErrorAttributes(boolean includeException) {
-        this.delegate = new DefaultErrorAttributes(includeException);
-    }
+//    public ReadableErrorAttributes(boolean includeException) {
+//        this.delegate = new DefaultErrorAttributes(includeException);
+//    }
 
     @Override
     public Map<String, Object> getErrorAttributes(WebRequest webRequest, boolean includeStackTrace) {
         Map<String, Object> attributes = delegate.getErrorAttributes(webRequest, includeStackTrace);
+        String defaultMessage = (String) attributes.get("message");
+        
         Throwable error = getError(webRequest);
 
         // TODO attributes, error 을 사용해서 message 속성을 읽기 좋은 문구로 가공한다.
         // TODO ex) attributes.put("message", "문구");
-
-        return attributes;
+        
+       String errorCode = String.format("Exception.%s", error.getClass().getSimpleName());
+       String errorMessage = messageSource.getMessage(
+    		   errorCode, new Object[0], defaultMessage, webRequest.getLocale());
+       attributes.put("message", errorMessage);
+       return attributes;
     }
 
     @Override

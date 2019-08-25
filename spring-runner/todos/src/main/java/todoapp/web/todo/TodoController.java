@@ -21,7 +21,7 @@ public class TodoController {
 		this.site = site;
 		this.finder = finder;
 	}
-	
+
 	@RequestMapping("/todos") 
 	public void todos(Model model) {
 		List<Todo> todos = finder.getAll();

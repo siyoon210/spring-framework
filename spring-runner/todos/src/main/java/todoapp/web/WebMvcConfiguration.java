@@ -4,12 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.error.ErrorAttributes;
+import org.springframework.context.MessageSource;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 
+import todoapp.commons.web.error.ReadableErrorAttributes;
 import todoapp.commons.web.view.CommaSeparatedValuesView;
 
 /**
@@ -17,7 +21,13 @@ import todoapp.commons.web.view.CommaSeparatedValuesView;
  *
  * @author springrunner.kr@gmail.com
  */
+@Configuration
 public class WebMvcConfiguration implements WebMvcConfigurer {
+	
+	@Bean
+	public ErrorAttributes errorAttributes(MessageSource messageSource) {
+		return new ReadableErrorAttributes(messageSource);
+	}
 
     @Override
     public void configureViewResolvers(ViewResolverRegistry registry) {
