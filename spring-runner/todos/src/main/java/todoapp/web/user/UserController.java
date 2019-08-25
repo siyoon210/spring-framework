@@ -12,6 +12,8 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.view.RedirectView;
 
 import todoapp.core.user.application.UserJoinder;
 import todoapp.core.user.application.UserPasswordVerifier;
@@ -59,6 +61,13 @@ public class UserController {
 		sessionRepository.set(new UserSession(user));
 		
 		return "redirect:/todos";
+	}
+	
+	@GetMapping("/logout")
+	public View logout() {
+		sessionRepository.clear();
+		//return "redirect:/todos"; 와 아래는 같은 기
+		return new RedirectView("/todos");
 	}
 	
 	@ExceptionHandler(BindException.class)

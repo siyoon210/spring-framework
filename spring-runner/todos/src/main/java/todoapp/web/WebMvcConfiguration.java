@@ -4,20 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.boot.web.servlet.error.ErrorAttributes;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.View;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
 
 import todoapp.commons.web.error.ReadableErrorAttributes;
+import todoapp.commons.web.servlet.ExecutionTimeHandlerInterceptor;
+import todoapp.commons.web.servlet.LoggingHandlerInterceptor;
 import todoapp.commons.web.view.CommaSeparatedValuesView;
 import todoapp.security.UserSessionRepository;
 import todoapp.security.web.method.UserSessionArgumentResolver;
+import todoapp.security.web.servlet.RolesVerifyHandlerInterceptor;
+import todoapp.security.web.servlet.UserSessionFilter;
 
 /**
  * Spring Web MVC 설정
@@ -40,6 +46,20 @@ public class WebMvcConfiguration implements WebMvcConfigurer {
 	@Bean
 	public ErrorAttributes errorAttributes(MessageSource messageSource) {
 		return new ReadableErrorAttributes(messageSource);
+	}
+	
+	@Bean
+	public FilterRegistrationBean<UserSessionFilter> userSessionFilter(UserSessionRepository sessionRepository){
+		FilterRegistrationBean<UserSessionFilter> registrationBean = new FilterRegistrationBean<>();
+		registrationBean.setFilter(new UserSessionFilter(sessionRepository));
+		return registrationBean;
+	}
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new LoggingHandlerInterceptor());
+		registry.addInterceptor(new ExecutionTimeHandlerInterceptor());
+		registry.addInterceptor(new RolesVerifyHandlerInterceptor());
 	}
 
     @Override
