@@ -1,6 +1,8 @@
 package todoapp.core.user.application;
 
 import todoapp.core.user.domain.User;
+import todoapp.core.user.domain.UserEntityNotFoundException;
+import todoapp.core.user.domain.UserPasswordNotMatchedException;
 
 /**
  * 사용자 비밀번호 검증기 인터페이스
@@ -17,6 +19,6 @@ public interface UserPasswordVerifier {
      * @param rawPassword 비밀번호
      * @return 사용자 개체
      */
-    User verify(String username, String rawPassword);
+    User verify(String username, String rawPassword) throws UserPasswordNotMatchedException, UserEntityNotFoundException;
 
 }
