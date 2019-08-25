@@ -1,10 +1,12 @@
 package todoapp.web.user;
 
+import javax.annotation.security.RolesAllowed;
 import javax.validation.Valid;
 import javax.validation.constraints.Size;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.core.io.Resource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindException;
@@ -12,11 +14,13 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.View;
 import org.springframework.web.servlet.view.RedirectView;
 
 import todoapp.core.user.application.UserJoinder;
 import todoapp.core.user.application.UserPasswordVerifier;
+import todoapp.core.user.domain.ProfilePictureStorage;
 import todoapp.core.user.domain.User;
 import todoapp.core.user.domain.UserEntityNotFoundException;
 import todoapp.core.user.domain.UserPasswordNotMatchedException;
@@ -30,11 +34,14 @@ public class UserController {
 	private final UserPasswordVerifier verifier;
 	private final UserJoinder joinder;
 	private final UserSessionRepository sessionRepository;
+	private final ProfilePictureStorage profilePictureStorage;
 	
-	public UserController(UserPasswordVerifier verifier, UserJoinder joinder, UserSessionRepository sessionRepository) {
+	public UserController(UserPasswordVerifier verifier, UserJoinder joinder, UserSessionRepository sessionRepository
+			,ProfilePictureStorage profilePictureStorage) {
 		this.verifier = verifier;
 		this.joinder = joinder;
 		this.sessionRepository = sessionRepository;
+		this.profilePictureStorage = profilePictureStorage;
 	}
 
 	@GetMapping("/login")
@@ -94,5 +101,11 @@ public class UserController {
 		public void setPassword(String password) {
 			this.password = password;
 		}
+	}
+	
+	@RolesAllowed(UserSession.ROLE_USER)
+	@GetMapping("/user/profile-picture")
+	public @ResponseBody Resource profilePicture(UserSession session) {
+		return profilePictureStorage.load(session.getUser().getProfilePicture().getUri());
 	}
 }

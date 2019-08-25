@@ -25,9 +25,9 @@ public class UserProfile {
 
     public String getProfilePictureUrl() {
         if (user.hasProfilePicture()) {
-            throw new UnsupportedOperationException("사용자 프로필 이미지 주소(Url)를 작성하세요.");
+           return "/user/profile-picture"; 
         }
-
+    	
         // 프로필 이미지가 없으면 기본 프로필 이미지를 사용한다.
         return DEFAULT_PROFILE_PICTURE_URL;
     }
