@@ -8,6 +8,9 @@ logging:
     
 site:
   author: Siyoon
+  feat:
+    auth: true
+    onlineUsersCounter: false	
 
 spring:
   http:
