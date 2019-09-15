@@ -14,8 +14,9 @@ public class Post {
     private Long id;
 
     private String title;
+    private String text;
     private String category;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Author author;
+//    @ManyToOne(fetch = FetchType.EAGER)
+//    private Author author;
 }

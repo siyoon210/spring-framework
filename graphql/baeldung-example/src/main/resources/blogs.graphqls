@@ -3,15 +3,15 @@ type Post {
     title: String!
     text: String!
     category: String
-    author: Author!
+ #   author: Author!
 }
 
-type Author {
-    id: ID!
-    name: String!
-    thumbnail: String
-    posts: [Post]!
-}
+#type Author {
+#    id: ID!
+#    name: String!
+#    thumbnail: String
+#    posts: [Post]!
+#}
 
 # The Root Query for the application
 type Query {
@@ -19,6 +19,6 @@ type Query {
 }
 
 # The Root Mutation for the application
-type Mutation {
-    writePost(title: String!, text: String!, category: String) : Post!
-}
+#type Mutation {
+#    writePost(title: String!, text: String!, category: String) : Post!
+#}
