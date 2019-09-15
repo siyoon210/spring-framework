@@ -1,0 +1,18 @@
+logging:
+  level:
+    org:
+      springframework:
+        boot: INFO
+        web: DEBUG
+    todoapp: DEBUG
+    
+site:
+  author: Siyoon
+  feat:
+    auth: true
+    onlineUsersCounter: false	
+
+spring:
+  http:
+    encoding:
+     force: true
