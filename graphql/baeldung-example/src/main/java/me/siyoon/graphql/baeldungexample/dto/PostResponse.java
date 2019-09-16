@@ -1,6 +1,7 @@
 package me.siyoon.graphql.baeldungexample.dto;
 
 import lombok.*;
+import me.siyoon.graphql.baeldungexample.domain.Author;
 import me.siyoon.graphql.baeldungexample.domain.Post;
 
 import java.util.Collection;
@@ -17,7 +18,7 @@ public class PostResponse {
     private String title;
     private String text;
     private String category;
-    private String author;
+    private Author author;
 
     public static List<PostResponse> from(Collection<Post> entities) {
         return entities.stream().map(PostResponse::from).collect(Collectors.toList());
@@ -29,7 +30,7 @@ public class PostResponse {
                 .title(entity.getTitle())
                 .text(entity.getText())
                 .category(entity.getCategory())
-                .author(entity.getAuthor().getName())
+                .author(entity.getAuthor())
                 .build();
     }
 }
