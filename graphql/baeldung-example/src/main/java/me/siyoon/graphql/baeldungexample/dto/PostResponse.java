@@ -13,11 +13,11 @@ import java.util.stream.Collectors;
 @NoArgsConstructor
 @AllArgsConstructor
 public class PostResponse {
-    private String id;
+    private long id;
     private String title;
     private String text;
     private String category;
-//    private String authorId;
+    private String author;
 
     public static List<PostResponse> from(Collection<Post> entities) {
         return entities.stream().map(PostResponse::from).collect(Collectors.toList());
@@ -25,11 +25,11 @@ public class PostResponse {
 
     private static PostResponse from(Post entity) {
         return PostResponse.builder()
-                .id(String.valueOf(entity.getId()))
+                .id(entity.getId())
                 .title(entity.getTitle())
                 .text(entity.getText())
                 .category(entity.getCategory())
-//                .authorId(String.valueOf(entity.getAuthor().getId()))
+                .author(entity.getAuthor().getName())
                 .build();
     }
 }

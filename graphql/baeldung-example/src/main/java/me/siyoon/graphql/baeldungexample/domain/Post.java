@@ -17,6 +17,6 @@ public class Post {
     private String text;
     private String category;
 
-//    @ManyToOne(fetch = FetchType.EAGER)
-//    private Author author;
+    @ManyToOne(fetch = FetchType.EAGER)
+    private Author author;
 }
