@@ -18,6 +18,6 @@ type Query {
 }
 
 # The Root Mutation for the application
-#type Mutation {
-#    writePost(title: String!, text: String!, category: String) : Post!
-#}
+type Mutation {
+    writePost(title: String!, text: String!, category: String) : Post!
+}

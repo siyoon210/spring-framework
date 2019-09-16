@@ -24,7 +24,7 @@ public class PostResponse {
         return entities.stream().map(PostResponse::from).collect(Collectors.toList());
     }
 
-    private static PostResponse from(Post entity) {
+    public static PostResponse from(Post entity) {
         return PostResponse.builder()
                 .id(entity.getId())
                 .title(entity.getTitle())
