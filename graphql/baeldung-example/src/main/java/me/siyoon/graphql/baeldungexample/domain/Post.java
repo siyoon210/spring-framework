@@ -17,7 +17,7 @@ public class Post {
     private String text;
     private String category;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "author_id")
     private Author author;
 }
