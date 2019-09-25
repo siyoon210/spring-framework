@@ -11,7 +11,7 @@ import java.util.List;
 
 @Component
 @RequiredArgsConstructor
-public class Query implements GraphQLQueryResolver {
+public class MyQuery implements GraphQLQueryResolver {
     private final PostRepository postRepository;
 
     public List<PostResponse> getRecentPosts(int count, int offset) {
