@@ -13,7 +13,6 @@ public class PostResolver implements GraphQLResolver<PostResponse> {
     private final AuthorRepository authorRepository;
 
     public Author getAuthor(PostResponse postResponse) {
-        System.out.println("getAuthor 실행!");
         return authorRepository.findById(postResponse.getAuthor().getId()).orElseThrow(NullPointerException::new);
     }
 }
