@@ -9,7 +9,7 @@ public class UserModel {
     private String name;
 
     @ExcelHeader(headerName = "age")
-    private String age;
+    private Double age;
 
     @ExcelHeader(headerName = "gender")
     private String gender;
