@@ -23,7 +23,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class RestUploadController {
     //Save the uploaded file to this folder
-    private static String UPLOADED_FOLDER = ".";
+    private static String UPLOADED_FOLDER = "./uploadfiles/";
 
     // 3.1.1 Single file upload
     @PostMapping("/api/upload")
