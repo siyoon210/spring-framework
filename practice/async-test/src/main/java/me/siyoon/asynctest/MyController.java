@@ -15,7 +15,7 @@ public class MyController {
     @GetMapping("/async")
     public String async() throws InterruptedException {
         for (int i = 0; i < 3; i++) {
-            log.info("Controller Thread Name: '{}'", Thread.currentThread().getId());
+            log.info("Controller Thread Name: '{}'", Thread.currentThread().getName());
             myAsyncService.myAsyncMethod();
         }
 
@@ -26,7 +26,7 @@ public class MyController {
     @GetMapping("/sync")
     public String sync() throws InterruptedException {
         for (int i = 0; i < 3; i++) {
-            log.info("Controller Thread Name: '{}'", Thread.currentThread().getId());
+            log.info("Controller Thread Name: '{}'", Thread.currentThread().getName());
             myAsyncService.mySyncMethod();
         }
 
