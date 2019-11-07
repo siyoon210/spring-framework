@@ -1,8 +1,22 @@
-﻿# spring-framework
-For studying spring-framework
+﻿# Spring-Framework (Spring Boot)
 
-1. 초보 웹개발자를 위한 스프링4 프로그래밍 입문 / 저자 : 최범균
-2. FASTCAMPUS - JAVA 웹 프로그래밍
-3. 토비의 스프링 3.1 / 저자 : 이일민
-4. 자바 ORM표준 JPA 프로그래밍 / 저자 : 김영한
-5. (인프런) 스프링 부트 강좌 / 
+## (19.11.07) 스프링부트에서 비동기메소드 만들기
+1. 설정 컴포넌트에 @EnableAsync 애노테이션을 달아준다.
+```
+@Configuration
+@EnableAsync
+public class AsyncConfig {
+    ...
+}
+```
+- @EnableAsync 애노테이션이 달린 설정 컴포넌트가 없다면 @Async 애노테이션 달려 있어도 동기적으로 작동한다.
+
+2. 비동기적 호출을 원하는 메소드에 @Async 애노테이션을 달아준다.
+```
+@Async
+public void myAsyncMethod() {
+	...
+}
+```
+
+**비동기적으로 호출한다는 것은 결국 다른 쓰레드에게 작업을 일임한다는 뜻이다.**
