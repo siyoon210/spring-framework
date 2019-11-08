@@ -19,4 +19,12 @@ public void myAsyncMethod() {
 }
 ```
 
+3. 만약 리턴값이 존재한다면 Future<> 타입의 감싸서 반환하다.
+```
+@Async
+public Future<String> myAsyncMethod() {
+    return AsyncResult.forValue(...);
+}
+```
+
 **비동기적으로 호출한다는 것은 결국 다른 쓰레드에게 작업을 일임한다는 뜻이다.**
