@@ -1,5 +1,19 @@
 ﻿# Spring-Framework (Spring Boot)
 
+## (19.12.21) @Transactional 전파 레벨 옵션
+### @Transactional(propagation = Propagation.REQUIRED)
+- 기본 디펄트 값으로 설정되어 있다.
+- 호출한곳에서 트랜잭션이 없는 경우
+    - 새로운 트랜잭션을 시작한다.
+- 호출한곳에서 트랜잭션이 존재한 경우
+    - 새로운 트랜잭션을 시작하지 않는다.
+    
+### @Transactional(propagation = Propagation.REQUIRES_NEW)
+- 매번 새로운 트랜잭션을 시작한다.
+
+### @Transactional(propagation = Propagation.NESTED)
+- REQUIRED와 비슷하지만 SAVEPOINT를 지정한 시점까지 부분 롤백이 가능하다.
+
 ## (19.11.07) 스프링부트에서 비동기메소드 만들기
 1. 설정 컴포넌트에 @EnableAsync 애노테이션을 달아준다.
 ```
