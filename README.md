@@ -1,5 +1,9 @@
 ﻿# Spring-Framework (Spring Boot)
 
+## (19.12.22) @Transactional이 롤백시키는 익셉션
+- Spring에서 선언적 트랜잭션은 기본적으로 Unchecked Exception에서만 발생한다.
+- @Transactional(rollbackFor = Exception.class) rollbackFor 옵션을 사용하면 모든 Exception에 대해서 롤백처리 하게 할 수 있다.
+
 ## (19.12.21) @Transactional 전파 레벨 옵션
 ### @Transactional(propagation = Propagation.REQUIRED)
 - 기본 디펄트 값으로 설정되어 있다.
