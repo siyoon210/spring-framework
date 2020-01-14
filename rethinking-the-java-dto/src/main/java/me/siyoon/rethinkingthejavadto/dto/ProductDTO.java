@@ -50,7 +50,6 @@ public enum ProductDTO {
         }
 
         @Value
-        @Builder
         public static class Private implements Id, Name, Price, Cost {
             Long id;
             String name;
