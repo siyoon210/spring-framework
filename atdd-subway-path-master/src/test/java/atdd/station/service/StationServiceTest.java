@@ -9,8 +9,8 @@ import org.springframework.boot.test.autoconfigure.web.reactive.AutoConfigureWeb
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 
+import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertThat;
 
 @DirtiesContext(classMode = DirtiesContext.ClassMode.BEFORE_EACH_TEST_METHOD)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -24,8 +24,10 @@ class StationServiceTest {
     public void createStation() {
         //given
         String stationName = "강남역";
-        StationCreationRequest stationCreationRequest = new StationCreationRequest(stationName);
-        
+        StationCreationRequest stationCreationRequest = StationCreationRequest.builder()
+                .name(stationName)
+                .build();
+
         //when
         StationCreationResponse stationCreationResponse = stationService.createStation(stationCreationRequest);
 
