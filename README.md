@@ -1,5 +1,11 @@
 ﻿# Spring-Framework (Spring Boot)
 
+## (20.02.15) @Transactional(readOnly = true)
+- 트랜잭션을 읽기 전용으로 설정할 수 있다.
+- 성능을 최적화하기 위해 사용할 수도 있고 특정 트랜잭션 작업 안에서 쓰기 작업이 일어나는 것을 의도적으로 방지하기 위해 사용할 수도 있다. 
+- JPA의 더티체킹이 진행되지 않는다.
+
+
 ## (19.12.22) @Transactional이 롤백시키는 익셉션
 - Spring에서 선언적 트랜잭션은 기본적으로 Unchecked Exception에서만 발생한다.
 - @Transactional(rollbackFor = Exception.class) rollbackFor 옵션을 사용하면 모든 Exception에 대해서 롤백처리 하게 할 수 있다.
