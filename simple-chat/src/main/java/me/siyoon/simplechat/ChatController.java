@@ -10,7 +10,7 @@ import org.springframework.stereotype.Controller;
 @Slf4j
 public class ChatController {
     @MessageMapping("/enter-user")
-    @SendTo("/topic/greeting")
+    @SendTo("/topic/greetings")
     public EnteringUserResponse addUser(@Payload EnteringUserRequest request) {
         log.info("User Add Request {}", request.getName());
 
