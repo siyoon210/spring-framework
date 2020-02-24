@@ -1,5 +1,103 @@
 ﻿# Spring-Framework (Spring Boot)
 
+## (20.02.24) Websocket 프로토콜 다루기
+0. 스프링 의존 설정
+```
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-websocket'
+    implementation 'org.webjars:webjars-locator-core' //webjar로 다루기 위한 의존 설정
+    implementation 'org.webjars:sockjs-client:1.0.2'
+    implementation 'org.webjars:stomp-websocket:2.3.3'
+    ...
+```
+
+1. Websocket 관련 설정(config)하기
+```
+@Configuration
+@EnableWebSocketMessageBroker
+public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/websocket").withSockJS(); //최초 소켓 연결시에 사용하는 엔드포인트 (SockJS를 사용하겠다는 뜻)
+    }
+
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry registry) {
+        registry.setApplicationDestinationPrefixes("/app"); //클라이언트가 서버로 메시지를 보낼때 사용하는 주소 prefix
+        registry.enableSimpleBroker("/topic"); //서버가 클라이언트로 메시지를 보낼때 사용하는 주소 prefix
+    }
+}
+```
+
+2. 핸들링할 컨트롤러 선언하기
+```
+@Controller
+public class GreetingController {
+    @MessageMapping("/hello") //위에 설정한 prefix를 포함해서 /app/hello라고 요청해줘야 한다.
+    @SendTo("/topic/greetings")
+    public Greeting greeting(HelloMessage message) {
+        return new Greeting("Hello, " + HtmlUtils.htmlEscape(message.getName()));
+    }
+}
+```
+
+3. JS로 요청보내기
+```
+var stompClient = null;
+
+function setConnected(connected) {
+    $("#connect").prop("disabled", connected);
+    $("#disconnect").prop("disabled", !connected);
+    if (connected) {
+        $("#conversation").show();
+    }
+    else {
+        $("#conversation").hide();
+    }
+    $("#greetings").html("");
+}
+
+function connect() {
+    var socket = new SockJS('/websocket');
+    stompClient = Stomp.over(socket);
+    // SockJS와 stomp client를 통해 연결을 시도.
+    stompClient.connect({}, function (frame) {
+        setConnected(true);
+        console.log('Connected: ' + frame);
+        stompClient.subscribe('/topic/greetings', function (greeting) {
+            showGreeting(JSON.parse(greeting.body).content);
+        });
+    });
+}
+
+function disconnect() {
+    if (stompClient !== null) {
+        stompClient.disconnect();
+    }
+    setConnected(false);
+    console.log("Disconnected");
+}
+
+function sendName() {
+    // /app/hello로 JSON 파라미터를 메세지 body로 전송.
+    stompClient.send("/app/hello", {}, JSON.stringify({'name': $("#name").val()}));
+}
+
+function showGreeting(message) {
+    $("#greetings").append("<tr><td>" + message + "</td></tr>");
+}
+
+$(function () {
+    $("form").on('submit', function (e) {
+        e.preventDefault();
+    });
+    $( "#connect" ).click(function() { connect(); });
+    $( "#disconnect" ).click(function() { disconnect(); });
+    $( "#send" ).click(function() { sendName(); });
+});
+```
+
+
 ## (20.02.15) @Transactional(readOnly = true)
 - 트랜잭션을 읽기 전용으로 설정할 수 있다.
 - 성능을 최적화하기 위해 사용할 수도 있고 특정 트랜잭션 작업 안에서 쓰기 작업이 일어나는 것을 의도적으로 방지하기 위해 사용할 수도 있다. 
