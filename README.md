@@ -1,5 +1,45 @@
 ﻿# Spring-Framework (Spring Boot)
 
+## (20.02.28) Websocket (웹소켓)
+- Websocket은 HTTP와 같은 **통신 프로토콜**이다.
+
+### HTTP와 유사점
+1. OSI 모델 7계층에 위치하며 4계층 TCP에 의존한다.
+2. 대부분의 브라우저가 지원한다.
+
+### HTTP와 다른점
+1. 전이중 통신을 한다. (HTTP는 반이중 방식)
+
+HTTP는 클라이언트가 서버에게 요청하고 이에 응답하는 방식이지만, 웹소켓은 서버가 클라이언트에게 메시지를 보낼 수 있다.
+
+### STOMP?
+웹소켓의 메시지를 어떤식으로 다룰지에 대핸 서브 프로토콜이다. 클라이언트와 서버가 어떤식으로 메시지를 해석해야 할지에 대한 약속이 필요하기 떄문이다.
+
+#### STOMP 메시지 예제
+```
+    SEND
+    destination:/queue/trade
+    content-type:application/json
+    content-length:44
+     
+    {"action":"BUY","ticker":"MMM","shares",44}^@
+```
+```
+    SUBSCRIBE
+    id:sub-1
+    destination:/topic/price.stock.*
+     
+    ^@
+```
+```
+    MESSAGE
+    message-id:nxahklf6-1
+    subscription:sub-1
+    destination:/topic/price.stock.MMM
+     
+    {"ticker":"MMM","price":129.45}^@
+```
+    
 ## (20.02.24) Websocket 프로토콜 다루기
 0. 스프링 의존 설정
 ```
