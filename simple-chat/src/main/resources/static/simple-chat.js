@@ -1,8 +1,8 @@
+var stompClient = null;
+
 $(function () {
     var $enterBtn = $('#enter');
     var $name = $('#name');
-
-    var stompClient = null;
 
     function enter() {
         console.log('유저 입장 요청', $name.val());
@@ -20,7 +20,6 @@ $(function () {
         })
     }
 
-    console.log('??');
     $enterBtn.on('click', function () {
         enter();
     });

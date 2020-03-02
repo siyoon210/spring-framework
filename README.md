@@ -4,6 +4,7 @@
 - /webjars/** 로 매핑되어있는 웹 자르 파일들 (예를 들어 제이쿼리나 부트스트랩)의 의존성을 넣고 /webjars/** 경로로 찾아 들어가면 쉽게 사용 할 수 있다.
     - 경로상의 버전을 생략하고 싶다면 webjars-locator-core 의존성을 추가한다.
     
+### 설정예제    
 ```
 implementation 'org.webjars:webjars-locator-core'
 implementation 'org.webjars:sockjs-client:1.0.2'
@@ -11,10 +12,12 @@ implementation 'org.webjars:stomp-websocket:2.3.3'
 implementation 'org.webjars:bootstrap:3.3.7'
 implementation 'org.webjars:jquery:3.1.1-1'
 ```
+
+### 사용예제
 ```
 <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <link href="/main.css" rel="stylesheet">
-<script src="/webjars/jquery/jquery.min.js"></script>
+<script src="/webjars/jquery/jquery.min.js"></script> 
 <script src="/webjars/sockjs-client/sockjs.min.js"></script>
 ```
 
