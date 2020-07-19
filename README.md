@@ -11,6 +11,21 @@
 - 멀티쓰레드 기반의 장점
     1. cpu intensive한 작업들이 있을 경우 별도의 쓰레드가 존재하기 때문에 유리하다.
 
+## (20.03.14) HTTP API 설계하기
+1. Best practice for RESTful API design is that path params are used to identify a specific resource or resources, while query parameters are used to sort/filter those resources.
+	- path param은 리소스를 identify 할 수 있는 값을 넣어야 한다. 
+	- query param은 정렬이나 필터링을 하기 위해서 사용한다.
+2. Therefore, the URI should only consist of parts that will never change and will continue to uniquely identify that resource throughout its lifetime.
+	- 좀 더 직관적인 관점, URI는 절대로 변하지 않아야 한다. 
+	- 즉 언제든지 변경 가능한 값은 path param으로 사용하기 적절하지 않다. 예를들어 순서(seqeunce)라든지, 변경가능한 attribute들
+
+### API응답시에 어떤 값까지 다 줘야할까?
+- 모든 세부적인 상황을 대비하여 모든 URL을 대비하는 것은 너무 많은 작업량으로 이어진다.
+- 결국 API를 한번 요청하고 응답하는 순간에 **'적절한'양의 데이터**를 한번에 내려줘야한다. 
+너무 데이터가 많아서 불필요한 정보를 다 내려준다던가, 너무 적은 데이터만을 내려주어서 사용자의 매 이벤트마다 API를 다시 호출해야하는 일은 없어야 한다. 이는 도메인지식을 기반으로 설계될 것이다.
+그 외에도 변동성이 민감한 정보들은 사용자가 이벤트를 진행 할때마다 업데이트 해줘야 할 것이고, 그렇지 않다면 한번에 응답으로 모두 대체해야 할 것이다. 
+
+
 ## (20.03.01) webjars
 - /webjars/** 로 매핑되어있는 웹 자르 파일들 (예를 들어 제이쿼리나 부트스트랩)의 의존성을 넣고 /webjars/** 경로로 찾아 들어가면 쉽게 사용 할 수 있다.
     - 경로상의 버전을 생략하고 싶다면 webjars-locator-core 의존성을 추가한다.
