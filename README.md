@@ -1,5 +1,14 @@
 ﻿# Spring-Framework (Spring Boot)
 
+## (20.10.08) Filter vs Interceptor
+![SPRING MVC request lifecycle](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F2564124C588F496C01B966)
+- 필터는 디스패처 서블릿 이전에 수행된다.
+- Filter는 스프링 컨텍스트 이전에 실행되어 스프링과 무관하다.
+- 인터셉터는 정확히 핸들러 인터셉터라고 하던데, 말그대로 핸들러(컨트롤러) 전후에 시행된다.
+- 하지만 인터셉터의 경우에는 스프링의 DispatcherServlet이 Controller를 호출하기 전,후에 끼어들기 때문에 스프링 컨텍스트(Context,영역) 내부에서 Controller에 관한 요청과 응답에 관여한다. (그리고 스프링의 모든 @Bean에 접근이 가능하다.)
+
+- https://velog.io/@sa833591/Spring-Filter-Interceptor-AOP-%EC%B0%A8%EC%9D%B4-yvmv4k96
+
 ## (20.07.19) Node vs Spring MVC
 - 노드는 기본적으로 싱글쓰레드 기반이다.
 - 스프링 MVC는 멀티쓰레드 기반이다.
