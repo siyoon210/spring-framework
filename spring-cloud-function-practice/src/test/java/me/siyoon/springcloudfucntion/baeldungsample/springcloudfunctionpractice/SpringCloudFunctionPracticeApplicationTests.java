@@ -1,10 +1,10 @@
-package me.siyoon.sprigcloudfunction.practice;
+package me.siyoon.springcloudfucntion.baeldungsample.springcloudfunctionpractice;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class PracticeApplicationTests {
+class SpringCloudFunctionPracticeApplicationTests {
 
     @Test
     void contextLoads() {
