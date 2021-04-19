@@ -1,10 +1,24 @@
 package me.siyoon.aspecttest;
 
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Component;
 
 @Aspect
-@Configuration
-public class AspectConfig {
-    
+@Component
+public class ExampleAspect {
+    @Around("@annotation(LogExecutionTime)")
+    public Object logExecutionTime(ProceedingJoinPoint joinPoint) throws Throwable {
+        System.out.println("~~ ExampleAspect.logExecutionTime");
+        final long start = System.currentTimeMillis();
+
+        final Object proceed = joinPoint.proceed();
+
+        final long executionTime = System.currentTimeMillis() - start;
+
+        System.out.println(joinPoint.getSignature() + " executed in " + executionTime + "ms");
+
+        return proceed;
+    }
 }

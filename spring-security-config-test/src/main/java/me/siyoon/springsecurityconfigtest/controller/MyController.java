@@ -1,8 +1,15 @@
 package me.siyoon.springsecurityconfigtest.controller;
 
+import org.apache.tomcat.util.http.fileupload.FileItem;
+import org.apache.tomcat.util.http.fileupload.disk.DiskFileItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.commons.CommonsMultipartFile;
+
+import java.io.File;
+import java.io.IOException;
 
 @RestController
 public class MyController {
@@ -12,7 +19,7 @@ public class MyController {
     }
 
     @GetMapping(path = "/edit")
-    public String edit() {
+    public String edit() throws IOException {
         return "edit";
     }
 
