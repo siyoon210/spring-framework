@@ -1,0 +1,39 @@
+plugins {
+    id 'org.springframework.boot' version '2.4.5'
+    id 'io.spring.dependency-management' version '1.0.11.RELEASE'
+    id 'java'
+}
+
+group = 'me.siyoon'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = '1.8'
+
+apply plugin: 'maven'
+apply plugin: 'org.springframework.boot.experimental.thin-launcher'
+
+repositories {
+    mavenCentral()
+}
+
+ext {
+    set('springCloudVersion', "2020.0.2")
+}
+
+dependencies {
+    implementation 'org.springframework.cloud:spring-cloud-starter-function-web'
+    implementation 'org.springframework.cloud:spring-cloud-function-adapter-aws:3.1.2'
+    implementation group: 'com.amazonaws', name: 'aws-lambda-java-events', version: '3.8.0'
+    implementation group: 'com.amazonaws', name: 'aws-lambda-java-core', version: '1.2.1'
+    implementation group: 'org.springframework.boot.experimental', name: 'spring-boot-thin-layout', version: '1.0.26.RELEASE'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+dependencyManagement {
+    imports {
+        mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
+    }
+}
+
+test {
+    useJUnitPlatform()
+}
