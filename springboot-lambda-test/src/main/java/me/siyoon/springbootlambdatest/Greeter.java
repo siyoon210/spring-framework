@@ -1,7 +1,10 @@
-package me.siyoon.springbootawslambdatest;
+package me.siyoon.springbootlambdatest;
+
+import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
 
+@Component
 public class Greeter implements Function<String, String> {
 
     @Override
