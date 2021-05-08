@@ -24,6 +24,7 @@ dependencies {
     implementation 'org.springframework.cloud:spring-cloud-function-adapter-aws'
     implementation 'com.amazonaws:aws-lambda-java-core:1.2.1'
     implementation 'com.amazonaws:aws-lambda-java-events:3.8.0'
+    runtimeOnly 'com.amazonaws:aws-lambda-java-log4j2:1.2.0'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
@@ -36,4 +37,12 @@ dependencyManagement {
 
 test {
     useJUnitPlatform()
+}
+
+task buildZip(type: Zip) {
+    from compileJava
+    from processResources
+    into('lib') {
+        from configurations.runtimeClasspath
+    }
 }
