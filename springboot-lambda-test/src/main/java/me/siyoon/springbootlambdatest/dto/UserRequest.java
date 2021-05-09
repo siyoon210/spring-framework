@@ -1,6 +1,6 @@
 package me.siyoon.springbootlambdatest.dto;
 
-public class UseRequest {
+public class UserRequest {
     private String name;
     private int age;
 

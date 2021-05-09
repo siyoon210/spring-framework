@@ -1,14 +1,14 @@
 package me.siyoon.springbootlambdatest.functions;
 
 import me.siyoon.springbootlambdatest.component.LowerCaseHelper;
-import me.siyoon.springbootlambdatest.dto.UseRequest;
+import me.siyoon.springbootlambdatest.dto.UserRequest;
 import me.siyoon.springbootlambdatest.dto.AdultJudgeResponse;
 import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
 
 @Component
-public class AdultJudge implements Function<UseRequest, AdultJudgeResponse> {
+public class AdultJudge implements Function<UserRequest, AdultJudgeResponse> {
     private final LowerCaseHelper lowerCaseHelper;
 
     public AdultJudge(LowerCaseHelper lowerCaseHelper) {
@@ -16,7 +16,7 @@ public class AdultJudge implements Function<UseRequest, AdultJudgeResponse> {
     }
 
     @Override
-    public AdultJudgeResponse apply(UseRequest request) {
+    public AdultJudgeResponse apply(UserRequest request) {
         String name = lowerCaseHelper.toLowerCase(request.getName());
 
         if (request.getAge() > 20) {
