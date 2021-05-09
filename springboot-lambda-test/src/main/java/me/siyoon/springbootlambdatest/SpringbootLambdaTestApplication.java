@@ -12,9 +12,4 @@ public class SpringbootLambdaTestApplication {
     public static void main(String[] args) {
         SpringApplication.run(SpringbootLambdaTestApplication.class, args);
     }
-
-    @Bean
-    public Function<String, String> reverseString() {
-        return value -> new StringBuilder(value).reverse().toString();
-    }
 }

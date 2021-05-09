@@ -20,11 +20,10 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter'
     implementation 'org.springframework.cloud:spring-cloud-function-context'
 
-//    implementation 'org.springframework.cloud:spring-cloud-starter-function-web'
+    implementation 'org.springframework.cloud:spring-cloud-starter-function-web'
     implementation 'org.springframework.cloud:spring-cloud-function-adapter-aws'
     implementation 'com.amazonaws:aws-lambda-java-core:1.2.1'
     implementation 'com.amazonaws:aws-lambda-java-events:3.8.0'
-    runtimeOnly 'com.amazonaws:aws-lambda-java-log4j2:1.2.0'
 
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
