@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.util.function.Function;
 
-@Component
 public class AdultJudge implements Function<UserRequest, AdultJudgeResponse> {
     private final LowerCaseHelper lowerCaseHelper;
 
