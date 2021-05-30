@@ -16,18 +16,17 @@ ext {
     set('springCloudVersion', "2020.0.2")
 }
 
-dependencies {
-    implementation 'org.springframework.cloud:spring-cloud-function-adapter-aws'
-    implementation 'com.amazonaws:aws-lambda-java-core:1.2.1'
-    implementation 'com.amazonaws:aws-lambda-java-events:3.8.0'
-
-//    testImplementation 'org.springframework.boot:spring-boot-starter-test'
-}
-
 dependencyManagement {
     imports {
         mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
     }
+}
+
+dependencies {
+//    implementation 'org.springframework.cloud:spring-cloud-starter-function-web'
+    implementation 'org.springframework.cloud:spring-cloud-function-adapter-aws'
+    implementation 'com.amazonaws:aws-lambda-java-core:1.2.1'
+    implementation 'com.amazonaws:aws-lambda-java-events:3.8.0'
 }
 
 test {

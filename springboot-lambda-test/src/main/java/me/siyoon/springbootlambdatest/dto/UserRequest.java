@@ -11,12 +11,4 @@ public class UserRequest {
     public int getAge() {
         return age;
     }
-
-    @Override
-    public String toString() {
-        return "MyRequest{" +
-                "name='" + name + '\'' +
-                ", age=" + age +
-                '}';
-    }
 }
