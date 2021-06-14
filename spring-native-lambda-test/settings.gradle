@@ -4,4 +4,4 @@ pluginManagement {
         gradlePluginPortal()
     }
 }
-rootProject.name = 'spring-native-beta-test'
+rootProject.name = 'spring-native-lambda-test'

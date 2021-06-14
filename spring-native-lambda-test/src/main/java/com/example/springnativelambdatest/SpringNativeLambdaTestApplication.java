@@ -1,13 +1,13 @@
-package me.siyoon.springnativebetatest;
+package com.example.springnativelambdatest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class SpringNativeBetaTestApplication {
+public class SpringNativeLambdaTestApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(SpringNativeBetaTestApplication.class, args);
+        SpringApplication.run(SpringNativeLambdaTestApplication.class, args);
     }
 
 }
