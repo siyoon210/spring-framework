@@ -1,0 +1,13 @@
+spring:
+  datasource:
+    jdbcUrl: jdbc:mariadb://localhost:3306/propagation_test
+    driverClassName: org.mariadb.jdbc.Driver
+    username: siyoon
+    password: 1234
+  jpa:
+    generate-ddl: true
+    show-sql: true
+    hibernate:
+      ddl-auto: create
+server:
+  port: 7070
