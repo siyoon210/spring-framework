@@ -53,7 +53,5 @@ public class MyComponent2 {
 //        transactionManager.commit(transactionStatus);
 //        transactionStatus.releaseSavepoint(savepoint);
 //        transaction.releaseSavepoint(savepoint);
-
-
     }
 }
