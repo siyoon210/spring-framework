@@ -1,4 +1,23 @@
 ﻿# Spring-Framework (Spring Boot)
+ 
+## (21.11.04) Bean Factory로 bean 만들때
+- 만약 해당 인스턴스가 InitializingBean 인터페이스를 구현했다면, BeanFactory로 직접 빈을 생성할떄 (beanFactory.initializeBean() 메서드를 호출하여서 생성(init)시에 필요한 설정을 진행한다.
+- 직접 생성하지 않는다면 컨테이너가 알아서 관리해준다.
+- 비슷한 인터페이스로 빈 객체가 없어질때 DisposableBean가 있다.
+- 
+
+```java
+public void init(GenericApplicationContext applicationContext) {
+    ConfigurableListableBeanFactory beanFactory = applicationContext.getBeanFactory();
+    beanFactory.registerSingleton(beanName, beanObject);
+    beanFactory.initializeBean(beanObject, beanName);
+}
+```
+
+- 만약 빈에 primary속성을 부여해주고 싶다면 아래와 같이 beanDefinition을 정의한다. (주의사항은 registerSingleton보다 먼저 선언해줘야했다.)
+```java 
+((DefaultListableBeanFactory) beanFactory).registerBeanDefinition(beanName, BeanDefinitionBuilder.genericBeanDefinition().setPrimary(true).getBeanDefinition());
+```
 
 ## (20.10.08) Filter vs Interceptor
 ![SPRING MVC request lifecycle](https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=http%3A%2F%2Fcfile24.uf.tistory.com%2Fimage%2F2564124C588F496C01B966)
